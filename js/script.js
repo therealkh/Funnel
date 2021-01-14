@@ -40,14 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastScrolledTo === 'up') {
       if (sections[currentSection].offsetTop >= pageYOffset) {
         fullpageScrollLock = false;
-        body.classList.remove('lock')
+        //body.classList.remove('lock')
         console.log('unlocked');
       }
     }
     else if (lastScrolledTo === 'down') {
       if (sections[currentSection].offsetTop <= pageYOffset) {
         fullpageScrollLock = false;
-        body.classList.remove('lock')
+        //body.classList.remove('lock')
         console.log('unlocked');
       }
     }

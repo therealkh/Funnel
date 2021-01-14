@@ -10,7 +10,9 @@ p {
   margin: 0; }
 
 body.lock {
-  overflow: hidden; }
+  overflow: hidden;
+  top: 0;
+  left: 0; }
 
 body {
   position: relative; }

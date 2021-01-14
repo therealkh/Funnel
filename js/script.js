@@ -40,12 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastScrolledTo === 'up') {
       if (sections[currentSection].offsetTop >= pageYOffset) {
         fullpageScrollLock = false;
+        body.classList.remove('lock')
         console.log('unlocked');
       }
     }
     else if (lastScrolledTo === 'down') {
       if (sections[currentSection].offsetTop <= pageYOffset) {
         fullpageScrollLock = false;
+        body.classList.remove('lock')
         console.log('unlocked');
       }
     }
@@ -164,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function ScrollTo(el) {
     window.scroll(pageXOffset, el.offsetTop);
     fullpageScrollLock = true;
+    body.classList.add('lock');
   }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {

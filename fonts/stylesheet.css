@@ -1,36 +1,23 @@
 @font-face {
-    font-family: 'Merel';
-    src: url('Merel-Black.eot');
-    src: url('Merel-Black.eot?#iefix') format('embedded-opentype'),
-        url('Merel-Black.woff2') format('woff2'),
-        url('Merel-Black.woff') format('woff'),
-        url('Merel-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Calibri';
-    src: url('Calibri.eot');
-    src: url('Calibri.eot?#iefix') format('embedded-opentype'),
-        url('Calibri.woff2') format('woff2'),
-        url('Calibri.woff') format('woff'),
-        url('Calibri.ttf') format('truetype');
+    font-family: 'Gotham Pro';
+    src: url('../fonts/gotham_pro/GothamPro.eot');
+    src: url('../fonts/gotham_pro/GothamPro.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/gotham_pro/GothamPro.woff2') format('woff2'),
+        url('../fonts/gotham_pro/GothamPro.woff') format('woff'),
+        url('../fonts/gotham_pro/GothamPro.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Calibri';
-    src: url('Calibri-Bold.eot');
-    src: url('Calibri-Bold.eot?#iefix') format('embedded-opentype'),
-        url('Calibri-Bold.woff2') format('woff2'),
-        url('Calibri-Bold.woff') format('woff'),
-        url('Calibri-Bold.ttf') format('truetype');
+    font-family: 'Gotham Pro';
+    src: url('../fonts/gotham_pro/GothamPro-Black.eot');
+    src: url('../fonts/gotham_pro/GothamPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/gotham_pro/GothamPro-Black.woff2') format('woff2'),
+        url('../fonts/gotham_pro/GothamPro-Black.woff') format('woff'),
+        url('../fonts/gotham_pro/GothamPro-Black.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
-

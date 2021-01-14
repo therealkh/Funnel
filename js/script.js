@@ -1,92 +1,67 @@
-$(document).ready(function () {
-  $('.stages__slider').slick({
-    prevArrow: '.stages__slider-prev',
-    nextArrow: '.stages__slider-next',
-    infinite: false,
-    dots: true,
-    appendDots: '.stages__title',
-    //autoplay: true,
-    //autoplaySpeed: 8000
-    //fade: true
-  });
-  $('.stages__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    const dots = document.querySelectorAll('.slick-dots li')
-    for (let i = 0; i <= dots.length - 1; i++) {
-      if (i <= nextSlide) {
-        dots[i].classList.add('active');
-      }
-      else {
-        dots[i].classList.remove('active');
-      }
-    }
-  });
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector('.header__menuBtn');
-  const menu = document.querySelector('.header__menu');
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
   const lockPadding = document.querySelectorAll('.lock-padding');
   const body = document.querySelector('body');
-  const menuLinks = document.querySelectorAll('.header__menu>ul>li>a');
-  //const decorsLeft = document.querySelectorAll('.decor-left');
-  const decoratedBlocks = document.querySelectorAll('.decorated');
-  const form = document.querySelector('form#sendForm');
-  const catalogForm = document.querySelector('form#sendCatalog');
-
-  //const prevDef = document.querySelectorAll('.prevDef');
-  //prevDef.forEach((el) => { el.addEventListener('click', (e) => { e.preventDefault(); }) });
-
-  console.dir(form);
-  form.onsubmit = (event) => {
-    send(form, event, 'mailer/sendForm.php', 'Спасибо! Ваша заявка была отправлена.')
-  }
-  catalogForm.onsubmit = (event) => {
-    send(catalogForm, event, 'mailer/sendCatalog.php', 'Спасибо за Ваш интерес. Скоро вышлем каталог!')
-  }
-
-  //form.addEventListener('sumbit', (e) => {
-  //})
-  console.log(decoratedBlocks);
-  document.addEventListener('mousemove', event => {
-    if (event.target.closest('.decorated')) {
-      block = event.target.closest('.decorated');
-      const decorLeft = block.querySelector('.decor-left');
-      const decorRight = block.querySelector('.decor-right');
-      //console.log(`Y(${event.clientY}) X(${event.clientX})`);
-      const width = block.offsetWidth;
-      const height = block.offsetHeight;
-      const offset = 10;
-      decorLeft.style.transform = `translate(${-1 * (offset * (event.clientX / width))}px, ${-1 * (offset * (event.clientY / height))}px)`;
-      decorRight.style.transform = `translate(${-1 * (offset * (event.clientX / width))}px, ${-1 * (offset * (event.clientY / height))}px)`;
-      //decorRight.style.transform = `rotateX(${-(event.clientX / 70)}deg) rotateY(${-(event.clientY / 70)}deg)`;
-
-    }
-  })
-  for (let i = 0; i < decoratedBlocks.length; i++) {
-    block = decoratedBlocks[i];
-
-  }
-  menuLinks.forEach((item, index, arr) => {
-    item.addEventListener('click', () => {
-      if (isMobileMenu) {
-        onBurgerClicked();
-      }
-    })
-  })
-  let isMobileMenu = false;
+  const header = document.querySelector('header')
+  const sections = document.querySelectorAll('section');
   let unlock = true;
   let timeout = 400;
-
   //Listeners
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.header__menuBtn')) {
-      onBurgerClicked();
-    }
-  })
+  let currentSection = 0;
+  let fullpageScrollLock = false;
+  let lastYOffset = 0;
+  let lastScrolledTo = 'down';
+  window.addEventListener('scroll', function (e) {
 
+    if (!fullpageScrollLock) {
+      let nextSection;
+      if (pageYOffset > lastYOffset) {
+        if (currentSection < sections.length - 1) {
+          nextSection = currentSection + 1;
+          ScrollTo(sections[nextSection]);
+          currentSection = nextSection;
+        }
+        lastScrolledTo = 'down'
+      }
+      else if (pageYOffset === lastYOffset) {
+        //no scroll
+      }
+      else {
+        if (currentSection > 0) {
+          nextSection = currentSection - 1;
+          ScrollTo(sections[nextSection]);
+          currentSection = nextSection;
+        }
+        lastScrolledTo = 'up'
+      }
+    }
+    if (lastScrolledTo === 'up') {
+      if (sections[currentSection].offsetTop >= pageYOffset) {
+        fullpageScrollLock = false;
+        console.log('unlocked');
+      }
+    }
+    else if (lastScrolledTo === 'down') {
+      if (sections[currentSection].offsetTop <= pageYOffset) {
+        fullpageScrollLock = false;
+        console.log('unlocked');
+      }
+    }
+    lastYOffset = pageYOffset;
+
+
+
+
+
+    if (pageYOffset > 50) {
+      header.classList.remove('ontop');
+    }
+    else {
+      header.classList.add('ontop');
+    }
+  });
   //PopUp
   if (ppOpeners.length > 0) {
     for (let i = 0; i < ppOpeners.length; i++) {
@@ -117,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function openPopup(popup) {
+    console.log(popup);
     if (popup && unlock) {
       const popupActive = document.querySelector('.popup.opened');
       if (popupActive) {
@@ -147,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openPopup(document.querySelector('#result'));
   }
   function bodyLock() {
-    const lockPaddingValue = window.innerWidth - document.querySelector('.intro').offsetWidth + 'px';
+    const lockPaddingValue = window.innerWidth - document.querySelector('section').offsetWidth + 'px';
     //console.log(lockPaddingValue);
     if (lockPadding.length > 0) {
       for (let i = 0; i < lockPadding.length; i++) {
@@ -179,33 +155,26 @@ document.addEventListener("DOMContentLoaded", () => {
       unlock = true;
     }, timeout);
   }
+  //function LockScroll() {
+  //  body.classList.add('lock')
+  //}
+  //function UnlockScroll() {
+  //  body.classList.remove('lock')
+  //}
+  function ScrollTo(el) {
+    window.scroll(pageXOffset, el.offsetTop);
+    fullpageScrollLock = true;
+  }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       const activePopup = document.querySelector('.popup.opened');
       closePopup(activePopup);
     }
-    //console.log(typeof (e.key));
+    if (e.key === 'r') {
+      ScrollTo(sections[currentSection]);
+    }
   })
   //Functions
-  function onBurgerClicked() {
-    menuBtn.classList.toggle('active');
-    if (menuBtn.classList.contains('active')) {
-      openMobileMenu();
-    }
-    else {
-      closeMobileMenu();
-    }
-  }
-  function openMobileMenu() {
-    menu.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    isMobileMenu = true;
-  }
-  function closeMobileMenu() {
-    menu.classList.remove('active');
-    document.body.style.overflow = '';
-    isMobileMenu = false;
-  }
   function send(form, event, php, succesMSG) {
     const btn = form.querySelector('#formSubmit');
 

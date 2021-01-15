@@ -8,63 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll('section');
   let unlock = true;
   let timeout = 400;
+
+
+
   //Listeners
-  let currentSection = 0;
-  let fullpageScrollLock = false;
-  let lastYOffset = 0;
-  let lastScrolledTo = 'down';
-  window.addEventListener('scroll', function (e) {
-
-    if (!fullpageScrollLock) {
-      let nextSection;
-      if (pageYOffset > lastYOffset) {
-        if (currentSection < sections.length - 1) {
-          nextSection = currentSection + 1;
-          ScrollTo(sections[nextSection]);
-          currentSection = nextSection;
-        }
-        lastScrolledTo = 'down'
-      }
-      else if (pageYOffset === lastYOffset) {
-        //no scroll
-      }
-      else {
-        if (currentSection > 0) {
-          nextSection = currentSection - 1;
-          ScrollTo(sections[nextSection]);
-          currentSection = nextSection;
-        }
-        lastScrolledTo = 'up'
-      }
-    }
-    if (lastScrolledTo === 'up') {
-      if (sections[currentSection].offsetTop >= pageYOffset) {
-        bodyUnlock();
-        fullpageScrollLock = false;
-        sections[currentSection]
-        console.log('unlocked');
-      }
-    }
-    else if (lastScrolledTo === 'down') {
-      if (sections[currentSection].offsetTop <= pageYOffset) {
-        bodyUnlock();
-        fullpageScrollLock = false;
-        console.log('unlocked');
-      }
-    }
-    lastYOffset = pageYOffset;
 
 
 
-
-
-    if (pageYOffset > 50) {
-      header.classList.remove('ontop');
-    }
-    else {
-      header.classList.add('ontop');
-    }
-  });
   //PopUp
   if (ppOpeners.length > 0) {
     for (let i = 0; i < ppOpeners.length; i++) {
@@ -158,27 +108,18 @@ document.addEventListener("DOMContentLoaded", () => {
       unlock = true;
     }, timeout);
   }
-  function LockScroll() {
-    body.classList.add('lock')
-  }
-  function UnlockScroll() {
-    body.classList.remove('lock')
-  }
-  function ScrollTo(el) {
-    let top = el.offsetTop;
-    window.scroll(0, top);
-    bodyLock();
-    fullpageScrollLock = true;
-  }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       const activePopup = document.querySelector('.popup.opened');
       closePopup(activePopup);
     }
     if (e.key === 'r') {
-      ScrollTo(sections[currentSection]);
+      //ScrollTo(sections[currentSection]);
     }
   })
+
+
+
   //Functions
   function send(form, event, php, succesMSG) {
     const btn = form.querySelector('#formSubmit');
@@ -221,4 +162,23 @@ document.addEventListener("DOMContentLoaded", () => {
     req.send(new FormData(event.target));
   }
 
+
+
+
+
+  //Elements
+  new fullpage('#fullpage', {
+    onLeave: function (origin, destination, direction) {
+      let leavingSection = this;
+
+      //after leaving section 1
+      if (origin.index == 0 && direction == 'down') {
+        header.classList.remove('ontop');
+      }
+
+      else if (origin.index == 1 && direction == 'up') {
+        header.classList.add('ontop');
+      }
+    }
+  });
 })

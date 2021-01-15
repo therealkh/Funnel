@@ -39,15 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (lastScrolledTo === 'up') {
       if (sections[currentSection].offsetTop >= pageYOffset) {
+        bodyUnlock();
         fullpageScrollLock = false;
-        //body.classList.remove('lock')
+        sections[currentSection]
         console.log('unlocked');
       }
     }
     else if (lastScrolledTo === 'down') {
       if (sections[currentSection].offsetTop <= pageYOffset) {
+        bodyUnlock();
         fullpageScrollLock = false;
-        //body.classList.remove('lock')
         console.log('unlocked');
       }
     }
@@ -157,16 +158,17 @@ document.addEventListener("DOMContentLoaded", () => {
       unlock = true;
     }, timeout);
   }
-  //function LockScroll() {
-  //  body.classList.add('lock')
-  //}
-  //function UnlockScroll() {
-  //  body.classList.remove('lock')
-  //}
+  function LockScroll() {
+    body.classList.add('lock')
+  }
+  function UnlockScroll() {
+    body.classList.remove('lock')
+  }
   function ScrollTo(el) {
-    window.scroll(pageXOffset, el.offsetTop);
+    let top = el.offsetTop;
+    window.scroll(0, top);
+    bodyLock();
     fullpageScrollLock = true;
-    body.classList.add('lock');
   }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {

@@ -6,13 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector('body');
   const header = document.querySelector('header')
   const sections = document.querySelectorAll('section');
+  const menuBtn = document.querySelector('.menu-btn');
+  const wrappers = document.querySelectorAll('.block__wrapper');
+  const menu = document.querySelector('.header__links');
   let unlock = true;
   let timeout = 400;
 
 
 
   //Listeners
-
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    if (menuBtn.classList.contains('active')) {
+      openMenu();
+    }
+    else {
+      closeMenu();
+    }
+  })
 
 
   //PopUp
@@ -162,8 +173,20 @@ document.addEventListener("DOMContentLoaded", () => {
     req.send(new FormData(event.target));
   }
 
-
-
+  function openMenu() {
+    menu.classList.add('active')
+    fullpage_api.setAllowScrolling(false);
+    wrappers.forEach((item, index, arr) => {
+      item.style.opacity = 0;
+    })
+  }
+  function closeMenu() {
+    menu.classList.remove('active')
+    fullpage_api.setAllowScrolling(true);
+    wrappers.forEach((item, index, arr) => {
+      item.style.opacity = 1;
+    })
+  }
 
 
   //Elements

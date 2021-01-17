@@ -69,24 +69,22 @@ body{
 }
 .block{
   box-sizing: border-box;
+  padding-top: $HEADER_HEIGHT;
   position: relative;
   height: 100%;
-  //border: 1px solid green;
   .container {
     .decor{
       z-index: 5;
     }
   }
+  @media (max-width: 767px){
+    padding-top: $HEADER_HEIGHT_M;
+  }
   &__wrapper{
-    //border: 1px solid blue;
-    padding-top: $HEADER_HEIGHT;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s;
-    @media (max-width: 767px){
-      padding-top: $HEADER_HEIGHT_M;
-    }
   }
 }
 .slick-track{
@@ -840,9 +838,8 @@ body{
       justify-content: space-between;
       align-items: flex-start;
       flex-direction: column;
-      padding: calc($HEADER_HEIGHT + 20px) 0 20px 0;
+      padding: 20px 0;
       @media (max-width: 767px){
-        padding: calc($HEADER_HEIGHT_M + 20px) 0 20px 0;
         align-items: center;
       }
       .services__slider {

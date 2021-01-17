@@ -38,19 +38,19 @@ body {
 
 .block {
   box-sizing: border-box;
+  padding-top: 100px;
   position: relative;
   height: 100%; }
   .block .container .decor {
     z-index: 5; }
+  @media (max-width: 767px) {
+    .block {
+      padding-top: 58px; } }
   .block__wrapper {
-    padding-top: 100px;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s; }
-    @media (max-width: 767px) {
-      .block__wrapper {
-        padding-top: 58px; } }
 
 .slick-track {
   display: flex; }
@@ -622,10 +622,9 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
-    padding: calc($HEADER_HEIGHT + 20px) 0 20px 0; }
+    padding: 20px 0; }
     @media (max-width: 767px) {
       .services .container .services__wrapper {
-        padding: calc($HEADER_HEIGHT_M + 20px) 0 20px 0;
         align-items: center; } }
     .services .container .services__wrapper .services__slider {
       width: 100%; }

@@ -105,11 +105,11 @@ body{
 
 
 .header {
+  position: fixed;
   background-color: $COLOR_WHITE;
   width: 100%;
   height: $HEADER_HEIGHT;
   box-shadow: 15px 15px 20px rgba(232, 28, 52, 0.15);
-  position: fixed;
   z-index: 9999999;
   transition: all 0.3s;
   @media (max-width: 767px){

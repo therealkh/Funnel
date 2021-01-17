@@ -39,18 +39,18 @@ body {
 .block {
   box-sizing: border-box;
   position: relative;
-  height: 100%;
-  padding-top: 100px; }
-  @media (max-width: 767px) {
-    .block {
-      padding-top: 58px; } }
+  height: 100%; }
   .block .container .decor {
     z-index: 5; }
   .block__wrapper {
+    padding-top: 100px;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s; }
+    @media (max-width: 767px) {
+      .block__wrapper {
+        padding-top: 58px; } }
 
 .slick-track {
   display: flex; }

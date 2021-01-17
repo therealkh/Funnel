@@ -44,7 +44,7 @@ body {
 .block {
   box-sizing: border-box;
   position: relative;
-  height: 100vh;
+  height: 100%;
   border: 1px solid green; }
   .block .container .decor {
     z-index: 5; }

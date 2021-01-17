@@ -459,6 +459,7 @@ body{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  position: static;
   .container {
     .intro__wrapper {
       display: flex;
@@ -603,7 +604,7 @@ body{
     visibility: hidden;
     @media (max-width: 575px){
       height: 50px;
-      width: 100%;
+      width: 100vw;
       justify-content: center;
     }
     &>a{

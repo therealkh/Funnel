@@ -36,7 +36,17 @@
   display: block;
   transform-origin: -50% center;
   border-radius: var(--box-border-radius);
-  
+  .load_perc{
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--box-border-radius);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &:after
   {
     content: '';

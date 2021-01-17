@@ -69,7 +69,7 @@ body{
 }
 .block{
   box-sizing: border-box;
-  padding-top: $HEADER_HEIGHT;
+  margin-top: $HEADER_HEIGHT;
   position: relative;
   height: 100vh;
   .container {
@@ -78,7 +78,7 @@ body{
     }
   }
   @media (max-width: 767px){
-    padding-top: $HEADER_HEIGHT_M;
+    margin-top: $HEADER_HEIGHT_M;
   }
   &__wrapper{
     position: relative;
@@ -899,7 +899,7 @@ body{
           }
           .service__btn {
           }
-          padding-top: 84px;
+          padding-top: 75px;
           @media (max-width: 575px){
             padding-top: 40px;
           }

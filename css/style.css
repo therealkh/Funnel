@@ -38,14 +38,14 @@ body {
 
 .block {
   box-sizing: border-box;
-  padding-top: 100px;
+  margin-top: 100px;
   position: relative;
   height: 100vh; }
   .block .container .decor {
     z-index: 5; }
   @media (max-width: 767px) {
     .block {
-      padding-top: 58px; } }
+      margin-top: 58px; } }
   .block__wrapper {
     position: relative;
     z-index: 10;
@@ -641,7 +641,7 @@ body {
       .services .container .services__wrapper .service__content {
         position: relative;
         max-width: 50%;
-        padding-top: 84px; }
+        padding-top: 75px; }
         @media (max-width: 767px) {
           .services .container .services__wrapper .service__content {
             max-width: 100%; } }

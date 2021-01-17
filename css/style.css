@@ -43,14 +43,14 @@ body {
   .block .container .decor {
     z-index: 5; }
   .block__wrapper {
-    margin-top: 100px;
+    padding-top: 100px;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s; }
     @media (max-width: 767px) {
       .block__wrapper {
-        margin-top: 58px; } }
+        padding-top: 58px; } }
 
 .slick-track {
   display: flex; }
@@ -622,9 +622,10 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
-    padding: 20px 0; }
+    padding: calc($HEADER_HEIGHT + 20px) 0 20px 0; }
     @media (max-width: 767px) {
       .services .container .services__wrapper {
+        padding: calc($HEADER_HEIGHT_M + 20px) 0 20px 0;
         align-items: center; } }
     .services .container .services__wrapper .services__slider {
       width: 100%; }

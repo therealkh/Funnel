@@ -827,11 +827,12 @@ body{
 }
 
 .services{
-  background: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/backgrounds/bg2.jpg');
+  background-image: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/backgrounds/bg2.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
+  transition: background-image 0.3s;
   .container {
     .services__wrapper{
       display: flex;

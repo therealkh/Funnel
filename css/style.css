@@ -612,11 +612,12 @@ body {
   100% {
     opacity: 0.5; } }
 .services {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../img/backgrounds/bg2.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../img/backgrounds/bg2.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: background-image 0.3s; }
   .services .container .services__wrapper {
     display: flex;
     justify-content: space-between;

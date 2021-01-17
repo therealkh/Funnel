@@ -1,3 +1,17 @@
+new fullpage('#fullpage', {
+  onLeave: function (origin, destination, direction) {
+    let leavingSection = this;
+
+    //after leaving section 1
+    if (origin.index == 0 && direction == 'down') {
+      header.classList.remove('ontop');
+    }
+
+    else if (origin.index == 1 && direction == 'up') {
+      header.classList.add('ontop');
+    }
+  }
+});
 document.addEventListener("DOMContentLoaded", () => {
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
@@ -190,18 +204,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //Elements
-  new fullpage('#fullpage', {
-    onLeave: function (origin, destination, direction) {
-      let leavingSection = this;
 
-      //after leaving section 1
-      if (origin.index == 0 && direction == 'down') {
-        header.classList.remove('ontop');
-      }
-
-      else if (origin.index == 1 && direction == 'up') {
-        header.classList.add('ontop');
-      }
-    }
-  });
 })

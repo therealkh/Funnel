@@ -22,10 +22,10 @@ document.body.onload = () => {
   const preloader = document.querySelector('.preloader');
   setTimeout(() => {
     preloader.style.opacity = '0'
-  }, 2000)
+  }, 1000)
   setTimeout(() => {
     preloader.style.display = 'none'
-  }, 2500);
+  }, 1500);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

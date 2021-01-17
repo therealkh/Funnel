@@ -440,11 +440,12 @@ body {
     left: 0;
     height: 60px;
     padding: 0 20px;
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
-    transition: all 0.2s; }
+    display: none;
+    opacity: 0;
+    visibility: hidden; }
     @media (max-width: 575px) {
       .intro .intro__contacts {
         height: 50px;

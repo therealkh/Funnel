@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+  const introContacts = document.querySelector('.intro__contacts');
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -12,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector('.header__links');
   let unlock = true;
   let timeout = 400;
-
+  introContacts.style.display = 'flex';
+  introContacts.style.visibility = 'visible';
+  introContacts.style.opacity = 1;
 
 
   //Listeners

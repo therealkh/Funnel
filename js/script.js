@@ -1,6 +1,4 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  const introContacts = document.querySelector('.intro__contacts');
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -13,13 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector('.header__links');
   let unlock = true;
   let timeout = 400;
-  let icUpdated;
-  introContacts.style.display = 'flex';
-  introContacts.style.visibility = 'visible';
-  introContacts.style.opacity = 1;
-  //introContacts.style.left = `-${introContacts.getBoundingClientRect().left}px`
-  //icUpdated = true;
-  //setInterval(Fresh, 100);
+
+
 
   //Listeners
   menuBtn.addEventListener('click', () => {
@@ -31,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenu();
     }
   })
-  window.addEventListener('resize', () => {
-    icUpdated = false;
-  })
+
+
   //PopUp
   if (ppOpeners.length > 0) {
     for (let i = 0; i < ppOpeners.length; i++) {
@@ -195,12 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.opacity = 1;
     })
   }
-  function Fresh() {
-    if (icUpdated === false) {
-      introContacts.style.left = `-${introContacts.getBoundingClientRect().left}px`
-      icUpdated = true;
-    }
-  }
+
 
   //Elements
   new fullpage('#fullpage', {

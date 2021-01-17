@@ -61,11 +61,11 @@ body {
   outline: none; }
 
 .header {
-  position: fixed;
   background-color: #FFFFFF;
   width: 100%;
   height: 100px;
   box-shadow: 15px 15px 20px rgba(232, 28, 52, 0.15);
+  position: fixed;
   z-index: 9999999;
   transition: all 0.3s; }
   @media (max-width: 767px) {
@@ -321,8 +321,7 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../img/backgrounds/bg1.jpg");
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
-  position: static; }
+  background-repeat: no-repeat; }
   .intro .container .intro__wrapper {
     display: flex;
     align-items: center;
@@ -334,8 +333,7 @@ body {
         align-items: flex-start; } }
     @media (max-width: 575px) {
       .intro .container .intro__wrapper {
-        padding-bottom: 50px;
-        box-sizing: border-box; } }
+        padding-bottom: 50px; } }
     .intro .container .intro__wrapper .intro__links ul {
       margin: 0;
       padding: 0;
@@ -441,16 +439,15 @@ body {
     left: 0;
     height: 60px;
     padding: 0 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
-    display: none;
-    opacity: 0;
-    visibility: hidden; }
+    transition: all 0.2s; }
     @media (max-width: 575px) {
       .intro .intro__contacts {
         height: 50px;
-        width: 100vw;
+        width: 100%;
         justify-content: center; } }
     .intro .intro__contacts > a {
       font-family: Gotham Pro;

@@ -105,11 +105,11 @@ body{
 
 
 .header {
-  position: fixed;
   background-color: $COLOR_WHITE;
   width: 100%;
   height: $HEADER_HEIGHT;
   box-shadow: 15px 15px 20px rgba(232, 28, 52, 0.15);
+  position: fixed;
   z-index: 9999999;
   transition: all 0.3s;
   @media (max-width: 767px){
@@ -459,7 +459,6 @@ body{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  position: static;
   .container {
     .intro__wrapper {
       display: flex;
@@ -472,8 +471,6 @@ body{
       }
       @media (max-width: 575px){
         padding-bottom: 50px;
-        box-sizing: border-box;
-        //height: calc(100% - 50px);
       }
       .intro__links {
         ul {
@@ -595,16 +592,14 @@ body{
     left: 0;
     height: 60px;
     padding: 0 20px;
-    //display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: $COLOR_WHITE;
-    display: none;
-    opacity: 0;
-    visibility: hidden;
+    transition: all 0.2s;
     @media (max-width: 575px){
       height: 50px;
-      width: 100vw;
+      width: 100%;
       justify-content: center;
     }
     &>a{

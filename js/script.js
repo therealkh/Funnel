@@ -18,7 +18,15 @@ $(document).ready(function () {
 });
 
 
-
+document.body.onload = () => {
+  const preloader = document.querySelector('.preloader');
+  setTimeout(() => {
+    preloader.style.opacity = '0'
+  }, 2000)
+  setTimeout(() => {
+    preloader.style.display = 'none'
+  }, 2500);
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const ppOpeners = document.querySelectorAll('.popup-open');
@@ -33,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector('.header__links');
   let unlock = true;
   let timeout = 400;
+  //preloader.style.visibility = 'hidden';
 
 
 

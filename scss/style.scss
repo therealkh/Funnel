@@ -64,11 +64,6 @@ body.lock{
 body{
   position: relative;
 }
-#fullpage{
-  position: relative;
-  top: 0!important;
-  border: 1px solid red;
-}
 .container{
   height: 100%;
 }
@@ -76,22 +71,22 @@ body{
   box-sizing: border-box;
   position: relative;
   height: 100%;
-  border: 1px solid green;
+  padding-top: $HEADER_HEIGHT;
+  //border: 1px solid green;
+  @media (max-width: 767px){
+    padding-top: $HEADER_HEIGHT_M;
+  }
   .container {
     .decor{
       z-index: 5;
     }
   }
   &__wrapper{
-    border: 1px solid blue;
-    padding-top: $HEADER_HEIGHT;
+    //border: 1px solid blue;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s;
-    @media (max-width: 767px){
-      padding-top: $HEADER_HEIGHT_M;
-    }
   }
 }
 .slick-track{

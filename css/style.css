@@ -33,6 +33,10 @@ body.lock {
 body {
   position: relative; }
 
+#fullpage {
+  position: relative;
+  top: 0 !important; }
+
 .container {
   height: 100%; }
 

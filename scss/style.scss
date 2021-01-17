@@ -470,8 +470,9 @@ body{
         align-items: flex-start;
       }
       @media (max-width: 575px){
-        //margin-bottom: 50px;
-        height: calc(100% - 50px);
+        padding-bottom: 50px;
+        box-sizing: border-box;
+        //height: calc(100% - 50px);
       }
       .intro__links {
         ul {

@@ -11,7 +11,7 @@ $(document).ready(function () {
     console.log(parent);
     const slides = document.querySelectorAll('.services__slider .single-slide');
     //console.log(slides);
-    const bgUrl = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../${slides[nextSlide].getAttribute('data-bg')}')`;
+    const bgUrl = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('${slides[nextSlide].getAttribute('data-bg')}')`;
     parent.style.backgroundImage = bgUrl;
     console.log(bgUrl);
   });

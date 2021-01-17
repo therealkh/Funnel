@@ -999,23 +999,28 @@ body{
 
 
 .partfolio{
-  overflow: hidden;
+  overflow-x: visible;
   position: relative;
-  .container {
+  &>.container {
+    overflow-x: visible;
+    padding-right: 0;
+    margin-right: 0;
     .partfolio__wrapper{
       display: flex;
       flex-direction: column;
-      align-items: space-between;
       justify-content: space-around;
       overflow-x: visible;
       overflow-y: hidden;
+      //margin-left: -100px;
+      left: 0;
       //position: static;
       .title {
         min-height: 100px;
         max-height: 100px;
         position: relative;
+        overflow-x: visible;
         opacity: 0.1;
-        z-index: -1;
+        //z-index: -1;
         //position: absolute;
         //top: 160px;
         @media (max-width: 767px){

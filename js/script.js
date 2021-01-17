@@ -78,9 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
+  const portfolio_wrapper = document.querySelector('.partfolio__wrapper');
+  const intro_container = document.querySelector('.intro>.container');
+  const portfolio_container = document.querySelector('.partfolio>.container');
+  let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
+  let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
   let timeout = 400;
-  //preloader.style.visibility = 'hidden';
+  let portfolio_left_offset = portfolio_container_left - intro_container_left;
+  portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
 
 
 
@@ -95,7 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
+  window.addEventListener('resize', () => {
+    intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
+    portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
+    portfolio_left_offset = portfolio_container_left - intro_container_left;
+    portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
 
+  })
   //PopUp
   if (ppOpeners.length > 0) {
     for (let i = 0; i < ppOpeners.length; i++) {

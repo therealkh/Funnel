@@ -1,3 +1,16 @@
+$(document).ready(function () {
+  $('.services__slider').slick({
+    prevArrow: '.services__slider-p',
+    nextArrow: '.services__slider-n',
+    infinite: false,
+    dots: true,
+    appendDots: '.services__dots',
+  });
+});
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');

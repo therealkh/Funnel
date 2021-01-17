@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $('.services__slider').slick({
     prevArrow: '.services__slider-p',
     nextArrow: '.services__slider-n',
@@ -6,6 +7,7 @@ $(document).ready(function () {
     dots: true,
     appendDots: '.services__dots',
   });
+
   $('.services__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
     const parent = document.querySelector('.services')
     console.log(parent);
@@ -15,6 +17,43 @@ $(document).ready(function () {
     parent.style.backgroundImage = bgUrl;
     console.log(bgUrl);
   });
+
+
+
+
+  $('.portfolio-items').slick({
+    slidesToShow: 1,
+    arrows: true,
+    infinite: false,
+    variableWidth: true,
+    prevArrow: '.portfolio-items-p',
+    nextArrow: '.portfolio-items-n',
+  });
+  const dots = document.querySelectorAll('.portfolio-dot');
+  const dotsBlock = document.querySelector('.portfolio-dots');
+  dots.forEach((dot, id) => {
+    dot.addEventListener('click', () => {
+      if (!dot.classList.contains('active')) {
+        $('.portfolio-items').slick('slickGoTo', id);
+      }
+    })
+  })
+  $('.portfolio-items').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    dots.forEach((dot, id) => {
+      if (id === nextSlide) {
+        dot.classList.add('active');
+        dotsBlock.scroll({
+          top: 0,
+          left: dot.getBoundingClientRect().left - dotsBlock.getBoundingClientRect().left,
+          behavior: 'smooth'
+        })
+      }
+      else if (dot.classList.contains('active')) {
+        dot.classList.remove('active');
+      }
+    })
+  });
+
 });
 
 
@@ -22,10 +61,10 @@ document.body.onload = () => {
   const preloader = document.querySelector('.preloader');
   setTimeout(() => {
     preloader.style.opacity = '0'
-  }, 2000)
+  }, 0)
   setTimeout(() => {
     preloader.style.display = 'none'
-  }, 2500);
+  }, 0);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

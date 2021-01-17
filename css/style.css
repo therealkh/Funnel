@@ -622,10 +622,11 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
-    padding: 20px 0; }
+    padding: calc(20px + $HEADER_HEIGHT) 0 20px 0; }
     @media (max-width: 767px) {
       .services .container .services__wrapper {
-        align-items: center; } }
+        align-items: center;
+        padding: calc(20px + $HEADER_HEIGHT_M) 0 20px 0; } }
     .services .container .services__wrapper .services__slider {
       width: 100%; }
       .services .container .services__wrapper .services__slider .single-slide {

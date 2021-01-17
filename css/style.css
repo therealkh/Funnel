@@ -35,7 +35,8 @@ body {
 
 #fullpage {
   position: relative;
-  top: 0 !important; }
+  top: 0 !important;
+  border: 1px solid red; }
 
 .container {
   height: 100%; }
@@ -43,10 +44,12 @@ body {
 .block {
   box-sizing: border-box;
   position: relative;
-  height: 100vh; }
+  height: 100vh;
+  border: 1px solid green; }
   .block .container .decor {
     z-index: 5; }
   .block__wrapper {
+    border: 1px solid blue;
     padding-top: 100px;
     position: relative;
     z-index: 10;

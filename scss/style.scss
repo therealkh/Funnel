@@ -67,6 +67,7 @@ body{
 #fullpage{
   position: relative;
   top: 0!important;
+  border: 1px solid red;
 }
 .container{
   height: 100%;
@@ -75,12 +76,14 @@ body{
   box-sizing: border-box;
   position: relative;
   height: 100vh;
+  border: 1px solid green;
   .container {
     .decor{
       z-index: 5;
     }
   }
   &__wrapper{
+    border: 1px solid blue;
     padding-top: $HEADER_HEIGHT;
     position: relative;
     z-index: 10;

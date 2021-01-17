@@ -69,7 +69,6 @@ body{
 }
 .block{
   box-sizing: border-box;
-  margin-top: $HEADER_HEIGHT;
   position: relative;
   height: 100vh;
   .container {
@@ -77,14 +76,15 @@ body{
       z-index: 5;
     }
   }
-  @media (max-width: 767px){
-    margin-top: $HEADER_HEIGHT_M;
-  }
   &__wrapper{
+    margin-top: $HEADER_HEIGHT;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s;
+    @media (max-width: 767px){
+      margin-top: $HEADER_HEIGHT_M;
+    }
   }
 }
 .slick-track{

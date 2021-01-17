@@ -38,19 +38,19 @@ body {
 
 .block {
   box-sizing: border-box;
-  margin-top: 100px;
   position: relative;
   height: 100vh; }
   .block .container .decor {
     z-index: 5; }
-  @media (max-width: 767px) {
-    .block {
-      margin-top: 58px; } }
   .block__wrapper {
+    margin-top: 100px;
     position: relative;
     z-index: 10;
     height: 100%;
     transition: opacity 0.2s; }
+    @media (max-width: 767px) {
+      .block__wrapper {
+        margin-top: 58px; } }
 
 .slick-track {
   display: flex; }

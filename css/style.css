@@ -333,7 +333,7 @@ body {
         align-items: flex-start; } }
     @media (max-width: 575px) {
       .intro .container .intro__wrapper {
-        padding-bottom: 50px; } }
+        height: calc(100% - 50px); } }
     .intro .container .intro__wrapper .intro__links ul {
       margin: 0;
       padding: 0;

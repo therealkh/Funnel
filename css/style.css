@@ -10,6 +10,9 @@ html {
 p {
   margin: 0; }
 
+dl {
+  display: none; }
+
 body.lock {
   overflow: hidden; }
 

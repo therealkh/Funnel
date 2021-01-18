@@ -87,7 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const team_img = document.querySelector('.team__img');
   const team_info = document.querySelector('.team__info');
   const team_all = document.querySelector('.team-all');
-  console.log(team_all);
+  const team_all_btn = document.getElementById('team_see_all');
+  //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
@@ -107,31 +108,53 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenu();
     }
   })
-  team_all.addEventListener('mouseenter', () => {
-    team_info.classList.add('hide');
-    //alert(123);
-    //team_img.classList.remove('hide');
+
+
+  team_all_btn.addEventListener('click', () => {
+    let team_block;
+    if (document.body.clientWidth > 991) {
+      team_block = team_all;
+    }
+    else {
+      team_block = document.querySelector('.team-all-mobile')
+    }
+    if (!team_block.classList.contains('opened')) {
+      team_block.classList.add('opened');
+      team_info.classList.add('hide');
+      team_img.classList.add('hide');
+    }
   })
-  team_all.addEventListener('mouseleave', () => {
-    team_info.classList.remove('hide');
-    //team_img.classList.remove('hide');
-  })
+
+
+
   team_circles.forEach(item => {
     item.addEventListener('click', () => {
       if (item.getAttribute('data-name') && item.getAttribute('data-surname') && item.getAttribute('data-img') && item.getAttribute('data-text')) {
         let name = `${item.getAttribute('data-name')}<span> ${item.getAttribute('data-surname')}</span>`;
         let img = `<img src="${item.getAttribute('data-img')}" alt="">`
-        if (!team_img.classList.contains('hide')) {
-          team_info.classList.add('hide');
-          team_img.classList.add('hide');
-          setTimeout(() => {
-            team_name.innerHTML = name;
-            team_img.innerHTML = img;
-            team_text.textContent = item.getAttribute('data-text');
-            //team_info.classList.remove('hide');
-            team_img.classList.remove('hide');
-          }, 300)
-        }
+        //if (!team_img.classList.contains('hide')) {
+        team_info.classList.add('hide');
+        team_img.classList.add('hide');
+        setTimeout(() => {
+          team_name.innerHTML = name;
+          team_img.innerHTML = img;
+          team_text.textContent = item.getAttribute('data-text');
+          //team_info.classList.remove('hide');
+          team_img.classList.remove('hide');
+          team_info.classList.remove('hide');
+
+          let team_block;
+          if (document.body.clientWidth > 991) {
+            team_block = team_all;
+          }
+          else {
+            team_block = document.querySelector('.team-all-mobile')
+          }
+          if (team_block.classList.contains('opened')) {
+            team_block.classList.remove('opened');
+          }
+        }, 300)
+        //}
       }
     })
   })

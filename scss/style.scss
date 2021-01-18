@@ -1307,15 +1307,42 @@ body{
       justify-content: flex-start;
       align-items: flex-end;
       position: relative;
+      @media (max-width: 991px){
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        height: 100%;
+        align-items: center;
+      }
       .team__img {
-        //opacity: 0;
         width: 40%;
         transition: all 0.3s;
+        @media (max-width: 1199px) and (min-width: 992px){
+          margin-left: -100px;
+        }
+        @media (max-width: 991px){
+          width: auto;
+          height: 65%;
+        }
+        @media (max-width: 767px){
+          height: 50%;
+        }
+        @media (max-width: 575px){
+          height: auto;
+          width: 80%;
+        }
         &.hide{
           opacity: 0;
         }
         img {
           width: 100%;
+          @media (max-width: 991px){
+            width: auto;
+            height: 100%;
+          }
+          @media (max-width: 575px){
+            height: auto;
+            width: 100%;
+          }
           object-fit: contain;
         }
       }
@@ -1326,6 +1353,9 @@ body{
         margin-left: -50px;
         position: relative;
         transition: all 0.3s;
+        @media (max-width: 991px){
+          margin-left: 0;
+        }
         &.hide{
           opacity: 0;
         }
@@ -1338,6 +1368,9 @@ body{
             color: $COLOR_ACCENT;
             display: block;
           }
+          @media (max-width: 575px){
+            font-size: 45px;
+          }
         }
         .team__info-text {
           max-width: 525px;
@@ -1345,8 +1378,22 @@ body{
           line-height: 150%;
           color: $COLOR_TEXT_SECONDARY;
           margin: 24px 0;
+          @include max-text-lines(3);
+          @media (max-width: 1199px) and (min-width: 992px){
+            max-width: 450px;
+          }
+          @media (max-width: 575px){
+            font-size: 16px;
+            margin: 12px 0;
+          }
         }
         .team__info-btn {
+          @media (max-width: 991px){
+            margin-bottom: 24px;
+          }
+          @media (max-width: 575px){
+            margin-bottom: 12px;
+          }
           .theme-btn {
             &:hover {}
             &:active {}
@@ -1363,22 +1410,33 @@ body{
           line-height: 150%;
           text-decoration-line: underline;
           color: $COLOR_TEXT_SECONDARY;
+          @media (max-width: 991px){
+            position: static;
+          }
         }
       }
       .team-all{
         position: absolute;
         top: 0;
         right: -40%;
-        //border: 1px solid blue;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
-        //width: 100%;
         padding-top: $HEADER_HEIGHT;
         transition: all 0.3s;
-        &:hover{
-          right: -30%;
+        &.opened{
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        @media (max-width: 991px){
+          right: -200%;
+          display: none;
+        }
+        @media (min-width: 992px){
+          &:hover{
+            right: -30%;
+          }
         }
         @media (max-width: 767px){
           padding-top: $HEADER_HEIGHT_M;
@@ -1401,6 +1459,61 @@ body{
               height: 120px;
               border-radius: 50%;
               border: 2px solid $COLOR_WHITE;
+            }
+            span{
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 150%;
+              color: $COLOR_WHITE;
+            }
+          }
+        }
+      }
+      .team-all-mobile{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+        padding-top: $HEADER_HEIGHT;
+        transition: all 0.3s;
+        opacity: 0;
+        visibility: hidden;
+        @media (max-width: 767px){
+          padding-top: $HEADER_HEIGHT_M;
+        }
+        &.opened{
+          visibility: visible;
+          opacity: 1;
+        }
+        .team-all__col{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          margin: 0 14px;
+          @media (max-width: 575px){
+            margin: 0 4px;
+          }
+          .team-circle{
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            img{
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+              border: 2px solid $COLOR_WHITE;
+              @media (max-width: 575px){
+                width: 90px;
+                height: 90px;
+              }
             }
             span{
               font-weight: bold;

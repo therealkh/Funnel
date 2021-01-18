@@ -18,10 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
-  const footer = document.querySelector('footer')
+  const footer = document.querySelector('footer');
+  const pItems = document.querySelectorAll('.news-item');
   console.log(wrappers);
   let unlock = true;
   let timeout = 400;
+
+  let pMarginBottom = pItems[1].getBoundingClientRect().left - (pItems[0].getBoundingClientRect().left + pItems[0].offsetWidth);
+  pItems.forEach((item, index) => {
+    item.style.marginBottom = `${pMarginBottom}px`;
+    let id = item.querySelector('.news-item__id');
+    id.textContent = `0${index + 1}`;
+  })
+
 
   //Listeners
   menuBtn.addEventListener('click', () => {
@@ -45,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   window.addEventListener('scroll', () => {
     let footerOffset = footer.getBoundingClientRect().top;
-    console.log(footerOffset);
+    //console.log(footerOffset);
     if (footerOffset < 100) {
       header.classList.add('ontop');
     }

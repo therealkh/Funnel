@@ -1741,6 +1741,116 @@ body {
             .news > .container .news__wrapper .news-items-btns a.news-items-all {
               margin-left: 0; } }
 
+.footer {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../img/backgrounds/footer.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../img/backgrounds/footer.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
+  .footer .container .footer__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    @media (max-width: 1024px) {
+      .footer .container .footer__wrapper {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; } }
+    .footer .container .footer__wrapper .footer-left {
+      width: 50%;
+      height: 100%;
+      padding: 50px 10px 50px 0; }
+      @media (max-width: 1024px) {
+        .footer .container .footer__wrapper .footer-left {
+          padding: 30px;
+          height: 50%;
+          width: 100%; } }
+      @media (max-width: 575px) {
+        .footer .container .footer__wrapper .footer-left {
+          padding: 10px; } }
+      .footer .container .footer__wrapper .footer-left__map {
+        width: 100%;
+        height: 100%; }
+    .footer .container .footer__wrapper .footer-right {
+      width: 50%;
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      padding-left: 10px; }
+      @media (max-width: 1024px) {
+        .footer .container .footer__wrapper .footer-right {
+          height: 50%;
+          width: 100%; } }
+      .footer .container .footer__wrapper .footer-right__title {
+        font-weight: bold;
+        font-size: 54px;
+        text-transform: uppercase;
+        color: #E81C34;
+        padding-top: 84px;
+        position: relative;
+        padding-left: 2px; }
+        @media (max-width: 575px) {
+          .footer .container .footer__wrapper .footer-right__title {
+            font-size: 26px;
+            padding-top: 30px; } }
+        .footer .container .footer__wrapper .footer-right__title:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 60px;
+          background-color: #FFFFFF; }
+          @media (max-width: 575px) {
+            .footer .container .footer__wrapper .footer-right__title:before {
+              height: 30px; } }
+      .footer .container .footer__wrapper .footer-right__phone, .footer .container .footer__wrapper .footer-right__mail {
+        font-size: 50px;
+        line-height: 150%;
+        color: #FFFFFF;
+        padding-left: 2px; }
+        @media (max-width: 575px) {
+          .footer .container .footer__wrapper .footer-right__phone, .footer .container .footer__wrapper .footer-right__mail {
+            font-size: 26px; } }
+      .footer .container .footer__wrapper .footer-right__ardess {
+        font-size: 24px;
+        line-height: 150%;
+        color: #FFFFFF;
+        padding-left: 2px; }
+        @media (max-width: 575px) {
+          .footer .container .footer__wrapper .footer-right__ardess {
+            display: none; } }
+      .footer .container .footer__wrapper .footer-right__btn {
+        margin-top: 24px;
+        padding-left: 2px; }
+        .footer .container .footer__wrapper .footer-right__btn.theme-btn {
+          width: 100%; }
+      .footer .container .footer__wrapper .footer-right a:not(.theme-btn) {
+        color: #FFFFFF;
+        text-decoration: none; }
+        .footer .container .footer__wrapper .footer-right a:not(.theme-btn):hover {
+          color: #E81C34; }
+        .footer .container .footer__wrapper .footer-right a:not(.theme-btn):active {
+          color: #B71528; }
+
 .form__title {
   font-weight: 900;
   font-size: 35px;

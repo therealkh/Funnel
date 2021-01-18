@@ -997,7 +997,6 @@ body{
   }
 }
 
-
 .partfolio{
   overflow-x: visible;
   position: relative;
@@ -1297,6 +1296,124 @@ body{
   }
 }
 
+.team{
+  background: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/backgrounds/bg_team.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  .container {
+    .team__wrapper{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      position: relative;
+      .team__img {
+        //opacity: 0;
+        width: 40%;
+        transition: all 0.3s;
+        &.hide{
+          opacity: 0;
+        }
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .team__info {
+        //border: 1px solid red;
+        //opacity: 0;
+        align-self: center;
+        margin-left: -50px;
+        position: relative;
+        transition: all 0.3s;
+        &.hide{
+          opacity: 0;
+        }
+        .team__info-name {
+          font-weight: bold;
+          font-size: 54px;
+          line-height: 100%;
+          color: $COLOR_WHITE;
+          span {
+            color: $COLOR_ACCENT;
+            display: block;
+          }
+        }
+        .team__info-text {
+          max-width: 525px;
+          font-size: 18px;
+          line-height: 150%;
+          color: $COLOR_TEXT_SECONDARY;
+          margin: 24px 0;
+        }
+        .team__info-btn {
+          .theme-btn {
+            &:hover {}
+            &:active {}
+            &:focus {}
+          }
+        }
+        &>a{
+          position: absolute;
+          z-index: 99;
+          bottom: -100px;
+          right: 0;
+          font-family: Gotham Pro;
+          font-size: 18px;
+          line-height: 150%;
+          text-decoration-line: underline;
+          color: $COLOR_TEXT_SECONDARY;
+        }
+      }
+      .team-all{
+        position: absolute;
+        top: 0;
+        right: -40%;
+        //border: 1px solid blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        //width: 100%;
+        padding-top: $HEADER_HEIGHT;
+        transition: all 0.3s;
+        &:hover{
+          right: -30%;
+        }
+        @media (max-width: 767px){
+          padding-top: $HEADER_HEIGHT_M;
+        }
+        &__col{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: 0 14px;
+          .team-circle{
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            img{
+              width: 120px;
+              height: 120px;
+              border-radius: 50%;
+              border: 2px solid $COLOR_WHITE;
+            }
+            span{
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 150%;
+              color: $COLOR_WHITE;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 
 

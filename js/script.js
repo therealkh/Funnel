@@ -81,6 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const portfolio_wrapper = document.querySelector('.partfolio__wrapper');
   const intro_container = document.querySelector('.intro>.container');
   const portfolio_container = document.querySelector('.partfolio>.container');
+  const team_circles = document.querySelectorAll('.team-circle');
+  const team_name = document.querySelector('.team__info-name');
+  const team_text = document.querySelector('.team__info-text');
+  const team_img = document.querySelector('.team__img');
+  const team_info = document.querySelector('.team__info')
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
@@ -99,6 +104,26 @@ document.addEventListener("DOMContentLoaded", () => {
     else {
       closeMenu();
     }
+  })
+
+  team_circles.forEach(item => {
+    item.addEventListener('click', () => {
+      if (item.getAttribute('data-name') && item.getAttribute('data-surname') && item.getAttribute('data-img') && item.getAttribute('data-text')) {
+        let name = `${item.getAttribute('data-name')}<span> ${item.getAttribute('data-surname')}</span>`;
+        let img = `<img src="${item.getAttribute('data-img')}" alt="">`
+        if (!team_info.classList.contains('hide') && !team_img.classList.contains('hide')) {
+          team_info.classList.add('hide');
+          team_img.classList.add('hide');
+          setTimeout(() => {
+            team_name.innerHTML = name;
+            team_img.innerHTML = img;
+            team_text.textContent = item.getAttribute('data-text');
+            team_info.classList.remove('hide');
+            team_img.classList.remove('hide');
+          }, 300)
+        }
+      }
+    })
   })
 
   window.addEventListener('resize', () => {

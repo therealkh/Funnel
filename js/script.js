@@ -68,11 +68,11 @@ $(document).ready(function () {
 document.body.onload = () => {
   const preloader = document.querySelector('.preloader');
   setTimeout(() => {
-    preloader.style.opacity = '0'
-  }, 0)
+    preloader.classList.add('hidden');
+  }, 500)
   setTimeout(() => {
     preloader.style.display = 'none'
-  }, 0);
+  }, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -388,10 +388,10 @@ document.addEventListener("DOMContentLoaded", () => {
         header.classList.add('ontop');
       }
       //parfolio block
-      if (origin.index == 2) {
+      if (destination.index == 3) {
         menu.classList.add('black')
       }
-      else if (origin.index == 4) {
+      else if (destination.index == 5) {
         menu.classList.add('black')
       }
       else {

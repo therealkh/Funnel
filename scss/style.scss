@@ -269,6 +269,16 @@ body{
         padding-right: 20%;
         z-index: 100;
         transition: all 0.3s;
+        //background-color: rgba($color: #000000, $alpha: 0.0);
+        &.black{
+          ul{
+            li{
+              a{
+                color: $COLOR_TEXT;
+              }
+            }
+          }
+        }
         @media (max-width: 767px){
           height: calc(100vh - 58px);
           top: $HEADER_HEIGHT_M;
@@ -876,7 +886,7 @@ body{
           button{
           }
         }
-        li.slick-active{
+        li.slick-active,li:hover{
           opacity: 1;
         }
       }
@@ -1307,7 +1317,7 @@ body{
       justify-content: flex-start;
       align-items: flex-end;
       position: relative;
-      @media (max-width: 991px){
+      @media (max-width: 1024px){
         flex-direction: column-reverse;
         justify-content: flex-start;
         height: 100%;
@@ -1319,7 +1329,7 @@ body{
         @media (max-width: 1199px) and (min-width: 992px){
           margin-left: -100px;
         }
-        @media (max-width: 991px){
+        @media (max-width: 1024px){
           width: auto;
           height: 65%;
         }
@@ -1335,7 +1345,7 @@ body{
         }
         img {
           width: 100%;
-          @media (max-width: 991px){
+          @media (max-width: 1024px){
             width: auto;
             height: 100%;
           }
@@ -1353,7 +1363,7 @@ body{
         margin-left: -50px;
         position: relative;
         transition: all 0.3s;
-        @media (max-width: 991px){
+        @media (max-width: 1024px){
           margin-left: 0;
         }
         &.hide{
@@ -1379,7 +1389,7 @@ body{
           color: $COLOR_TEXT_SECONDARY;
           margin: 24px 0;
           @include max-text-lines(3);
-          @media (max-width: 1199px) and (min-width: 992px){
+          @media (max-width: 1199px) and (min-width: 1025px){
             max-width: 450px;
           }
           @media (max-width: 575px){
@@ -1388,7 +1398,7 @@ body{
           }
         }
         .team__info-btn {
-          @media (max-width: 991px){
+          @media (max-width: 1024px){
             margin-bottom: 24px;
           }
           @media (max-width: 575px){
@@ -1410,7 +1420,7 @@ body{
           line-height: 150%;
           text-decoration-line: underline;
           color: $COLOR_TEXT_SECONDARY;
-          @media (max-width: 991px){
+          @media (max-width: 1024px){
             position: static;
           }
         }
@@ -1418,25 +1428,32 @@ body{
       .team-all{
         position: absolute;
         top: 0;
-        right: -40%;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         padding-top: $HEADER_HEIGHT;
-        transition: all 0.3s;
+        left: 82%;
+        transform: translateX(0);
+        transition: all 0.7s;
+        @media (max-width: 1024px) and (min-width:992px){
+          left: 75%;
+          &:not(.opened):hover{
+            left: 65%;
+          }
+        }
         &.opened{
           left: 50%;
-          width: 100vw;
+          //width: 100vw;
           transform: translateX(-50%);
         }
         @media (max-width: 991px){
-          right: -200%;
+          left: 300%;
           display: none;
         }
-        @media (min-width: 992px){
-          &:hover{
-            right: -30%;
+        @media (min-width: 1025px){
+          &:not(.opened):hover{
+            left: 72%;
           }
         }
         @media (max-width: 767px){

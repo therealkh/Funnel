@@ -125,7 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 
-  team_all_btn.addEventListener('click', () => {
+  team_all_btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     let team_block;
     if (document.body.clientWidth > 991) {
       team_block = team_all;
@@ -158,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
           team_info.classList.remove('hide');
 
           let team_block;
-          if (document.body.clientWidth > 991) {
+          if (document.body.clientWidth > 1024) {
             team_block = team_all;
           }
           else {
@@ -180,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
       team_info.classList.remove('hide');
     }
   })
-  team_all.addEventListener('click', (e) => {
+  document.querySelector('.team').addEventListener('click', (e) => {
     if (team_all.classList.contains('opened')) {
       team_all.classList.remove('opened');
       team_img.classList.remove('hide');
@@ -383,6 +386,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       else if (origin.index == 1 && direction == 'up') {
         header.classList.add('ontop');
+      }
+      //parfolio block
+      if (origin.index == 2) {
+        menu.classList.add('black')
+      }
+      else if (origin.index == 4) {
+        menu.classList.add('black')
+      }
+      else {
+        menu.classList.remove('black')
       }
     }
   });

@@ -256,6 +256,8 @@ body {
       z-index: 100;
       -webkit-transition: all 0.3s;
       transition: all 0.3s; }
+      .header__wrapper .header__mobile-menu .header__links.black ul li a {
+        color: #2F2F2F; }
       @media (max-width: 767px) {
         .header__wrapper .header__mobile-menu .header__links {
           height: calc(100vh - 58px);
@@ -822,7 +824,7 @@ body {
       content: 'Продвижение'; }
     .services .container .services__wrapper .slick-dots li:nth-child(5) button:after {
       content: 'PR'; }
-    .services .container .services__wrapper .slick-dots li.slick-active {
+    .services .container .services__wrapper .slick-dots li.slick-active, .services .container .services__wrapper .slick-dots li:hover {
       opacity: 1; }
     .services .container .services__wrapper .service {
       display: -webkit-box;
@@ -1243,7 +1245,7 @@ body {
         -ms-flex-align: end;
             align-items: flex-end;
     position: relative; }
-    @media (max-width: 991px) {
+    @media (max-width: 1024px) {
       .team .container .team__wrapper {
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
@@ -1263,7 +1265,7 @@ body {
       @media (max-width: 1199px) and (min-width: 992px) {
         .team .container .team__wrapper .team__img {
           margin-left: -100px; } }
-      @media (max-width: 991px) {
+      @media (max-width: 1024px) {
         .team .container .team__wrapper .team__img {
           width: auto;
           height: 65%; } }
@@ -1280,7 +1282,7 @@ body {
         width: 100%;
         -o-object-fit: contain;
            object-fit: contain; }
-        @media (max-width: 991px) {
+        @media (max-width: 1024px) {
           .team .container .team__wrapper .team__img img {
             width: auto;
             height: 100%; } }
@@ -1295,7 +1297,7 @@ body {
       position: relative;
       -webkit-transition: all 0.3s;
       transition: all 0.3s; }
-      @media (max-width: 991px) {
+      @media (max-width: 1024px) {
         .team .container .team__wrapper .team__info {
           margin-left: 0; } }
       .team .container .team__wrapper .team__info.hide {
@@ -1325,14 +1327,14 @@ body {
         -webkit-box-orient: vertical;
         line-clamp: 3;
         box-orient: vertical; }
-        @media (max-width: 1199px) and (min-width: 992px) {
+        @media (max-width: 1199px) and (min-width: 1025px) {
           .team .container .team__wrapper .team__info .team__info-text {
             max-width: 450px; } }
         @media (max-width: 575px) {
           .team .container .team__wrapper .team__info .team__info-text {
             font-size: 16px;
             margin: 12px 0; } }
-      @media (max-width: 991px) {
+      @media (max-width: 1024px) {
         .team .container .team__wrapper .team__info .team__info-btn {
           margin-bottom: 24px; } }
       @media (max-width: 575px) {
@@ -1349,13 +1351,12 @@ body {
         -webkit-text-decoration-line: underline;
                 text-decoration-line: underline;
         color: #C4C4C4; }
-        @media (max-width: 991px) {
+        @media (max-width: 1024px) {
           .team .container .team__wrapper .team__info > a {
             position: static; } }
     .team .container .team__wrapper .team-all {
       position: absolute;
       top: 0;
-      right: -40%;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -1367,20 +1368,27 @@ body {
               align-items: center;
       height: 100%;
       padding-top: 100px;
-      -webkit-transition: all 0.3s;
-      transition: all 0.3s; }
+      left: 82%;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      -webkit-transition: all 0.7s;
+      transition: all 0.7s; }
+      @media (max-width: 1024px) and (min-width: 992px) {
+        .team .container .team__wrapper .team-all {
+          left: 75%; }
+          .team .container .team__wrapper .team-all:not(.opened):hover {
+            left: 65%; } }
       .team .container .team__wrapper .team-all.opened {
         left: 50%;
-        width: 100vw;
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%); }
       @media (max-width: 991px) {
         .team .container .team__wrapper .team-all {
-          right: -200%;
+          left: 300%;
           display: none; } }
-      @media (min-width: 992px) {
-        .team .container .team__wrapper .team-all:hover {
-          right: -30%; } }
+      @media (min-width: 1025px) {
+        .team .container .team__wrapper .team-all:not(.opened):hover {
+          left: 72%; } }
       @media (max-width: 767px) {
         .team .container .team__wrapper .team-all {
           padding-top: 58px; } }
@@ -2314,4 +2322,5 @@ button[disabled] {
     .popup.opened .popup__content {
       -webkit-transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
               transform: perspective(600px) translate(0px, 0%) rotateX(0deg); }
+
 /*# sourceMappingURL=style.css.map */

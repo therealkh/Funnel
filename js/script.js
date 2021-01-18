@@ -18,7 +18,15 @@ $(document).ready(function () {
     console.log(bgUrl);
   });
 
-
+  $('.news-items').slick({
+    slidesToShow: 1,
+    arrows: true,
+    infinite: false,
+    variableWidth: true,
+    dots: false,
+    prevArrow: '.news-items-p',
+    nextArrow: '.news-items-n',
+  });
 
 
   $('.portfolio-items').slick({
@@ -79,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
   const portfolio_wrapper = document.querySelector('.partfolio__wrapper');
+  const news_wrapper = document.querySelector('.news__wrapper');
   const intro_container = document.querySelector('.intro>.container');
   const portfolio_container = document.querySelector('.partfolio>.container');
   const team_circles = document.querySelectorAll('.team-circle');
@@ -87,7 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const team_img = document.querySelector('.team__img');
   const team_info = document.querySelector('.team__info');
   const team_all = document.querySelector('.team-all');
+  const team_all_m = document.querySelector('.team-all-mobile');
   const team_all_btn = document.getElementById('team_see_all');
+  const news = document.querySelectorAll('.news-item');
   //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
@@ -95,8 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let timeout = 400;
   let portfolio_left_offset = portfolio_container_left - intro_container_left;
   portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
+  news_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
 
-
+  news.forEach((item, index) => {
+    let id = item.querySelector('.news-item__id');
+    id.textContent = `0${index + 1}`;
+  })
 
   //Listeners
   menuBtn.addEventListener('click', () => {
@@ -125,10 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-
-
   team_circles.forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (item.getAttribute('data-name') && item.getAttribute('data-surname') && item.getAttribute('data-img') && item.getAttribute('data-text')) {
         let name = `${item.getAttribute('data-name')}<span> ${item.getAttribute('data-surname')}</span>`;
         let img = `<img src="${item.getAttribute('data-img')}" alt="">`
@@ -159,6 +173,34 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
+  team_all_m.addEventListener('click', (e) => {
+    if (team_all_m.classList.contains('opened')) {
+      team_all_m.classList.remove('opened');
+      team_img.classList.remove('hide');
+      team_info.classList.remove('hide');
+    }
+  })
+  team_all.addEventListener('click', (e) => {
+    if (team_all.classList.contains('opened')) {
+      team_all.classList.remove('opened');
+      team_img.classList.remove('hide');
+      team_info.classList.remove('hide');
+    }
+  })
+  team_all.addEventListener('mouseenter', (e) => {
+    if (!team_all.classList.contains('opened')) {
+      if (!team_info.classList.contains('hide')) {
+        team_info.classList.add('hide');
+      }
+    }
+  })
+  team_all.addEventListener('mouseleave', (e) => {
+    if (!team_all.classList.contains('opened')) {
+      if (team_info.classList.contains('hide')) {
+        team_info.classList.remove('hide');
+      }
+    }
+  })
   window.addEventListener('resize', () => {
     intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
     portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));

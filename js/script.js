@@ -1,3 +1,5 @@
+const anchor = window.location.hash;
+window.location.hash = '';
 $(document).ready(function () {
 
   $('.services__slider').slick({
@@ -69,7 +71,11 @@ document.body.onload = () => {
   const preloader = document.querySelector('.preloader');
   setTimeout(() => {
     preloader.classList.add('hidden');
-
+    if (anchor) {
+      setTimeout(() => {
+        fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+      }, 500);
+    }
   }, 500)
   setTimeout(() => {
     preloader.style.display = 'none'
@@ -77,13 +83,7 @@ document.body.onload = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.hash) {
-    let anchor = window.location.hash;
-    window.location.hash = '';
-    setTimeout(() => {
-      fullpage_api.moveTo(getSectionIdByAnchor(anchor));
-    }, 3000);
-  }
+
 
 
   const ppOpeners = document.querySelectorAll('.popup-open');
@@ -410,38 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.opacity = 1;
     })
   }
-  function getSectionIdByAnchor(anchor) {
-    anchor = anchor.slice(anchor.indexOf('#') + 1);
-    //console.log(anchor);
-    let secID = 0;
-    switch (anchor) {
-      case 'intro':
-        secID = 1;
-        break;
-      case 'problems':
-        secID = 2;
-        break;
-      case 'services':
-        secID = 3;
-        break;
-      case 'partfolio':
-        secID = 4;
-        break;
-      case 'team':
-        secID = 5;
-        break;
-      case 'news':
-        secID = 6;
-        break;
-      case 'footer':
-        secID = 7;
-        break;
-      default:
-        secID = 0;
-        break;
-    }
-    return secID;
-  }
+
   //Elements
   new fullpage('#fullpage', {
     onLeave: function (origin, destination, direction) {
@@ -469,3 +438,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 })
+function getSectionIdByAnchor(anchor) {
+  anchor = anchor.slice(anchor.indexOf('#') + 1);
+  //console.log(anchor);
+  let secID = 0;
+  switch (anchor) {
+    case 'intro':
+      secID = 1;
+      break;
+    case 'problems':
+      secID = 2;
+      break;
+    case 'services':
+      secID = 3;
+      break;
+    case 'partfolio':
+      secID = 4;
+      break;
+    case 'team':
+      secID = 5;
+      break;
+    case 'news':
+      secID = 6;
+      break;
+    case 'footer':
+      secID = 7;
+      break;
+    default:
+      secID = 0;
+      break;
+  }
+  return secID;
+}

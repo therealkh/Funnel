@@ -140,6 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       let anchor = link.getAttribute('href');
       fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+      closeMenu();
+      menuBtn.classList.remove('active');
     })
   })
   gotoSlideAnchors.forEach((anchor) => {

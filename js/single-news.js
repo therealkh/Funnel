@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
   const footer = document.querySelector('footer')
+  const menuLinks = document.querySelectorAll('.menu-link');
   console.log(wrappers);
   let unlock = true;
   let timeout = 400;
@@ -39,7 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-
+  menuLinks.forEach((link, id) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      let anchor = link.getAttribute('href');
+      fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+      closeMenu();
+      menuBtn.classList.remove('active');
+    })
+  })
 
 
 

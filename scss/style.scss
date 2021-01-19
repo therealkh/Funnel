@@ -11,6 +11,7 @@ $COLOR_PRESSED: #B71528;
 $COLOR_WHITE: #FFFFFF;
 $COLOR_TEXT: #2F2F2F;
 $COLOR_TEXT_SECONDARY: #C4C4C4;
+$COLOR_GRAY: #444444;
 //$COLOR_WHITE_GREY: #E5E5E5;
 //$COLOR_GREY: #C4C4C4;
 //$COLOR_LIGHT: #E7E1C9;
@@ -1068,7 +1069,7 @@ body{
           }
         }
       }
-      .portfolio-items {
+      .partfolio-items {
         display: flex;
         //position: absolute;
         //z-index: 5;
@@ -1076,7 +1077,7 @@ body{
         .slick-list.draggable{
           //overflow: visible;
         }
-        .portfolio-item-wrapper{
+        .partfolio-item-wrapper{
           &:first-child{
             padding-left: 200px;
             box-sizing: border-box;
@@ -1088,11 +1089,11 @@ body{
             }
           }
           &.slick-active{
-            .portfolio-item{
+            .partfolio-item{
               background:linear-gradient( rgba($color: #000000, $alpha: 0),rgba($color: #000000, $alpha: 0.4),rgba($color: #000000, $alpha: 1.0));
             }
           }
-          .portfolio-item {
+          .partfolio-item {
             min-width: 300px;
             max-width: 300px;
             height: 300px;
@@ -1123,14 +1124,14 @@ body{
                 padding: 10px;
               }
               //background: #000;
-              .portfolio-item__title {
+              .partfolio-item__title {
                 font-weight: bold;
                 font-size: 24px;
                 @media (max-width: 450px){
                   font-size: 16px;
                 }
               }
-              .portfolio-item__description {
+              .partfolio-item__description {
                 @include max-text-lines(2);
                 font-size: 18px;
                 line-height: 150%;
@@ -1140,7 +1141,7 @@ body{
                   display: none;
                 }
               }
-              .portfolio-item__meta {
+              .partfolio-item__meta {
                 display: flex;
                 justify-content: space-between;
                 @media (max-width: 450px){
@@ -1148,7 +1149,7 @@ body{
                   justify-content: center;
                   align-items: flex-start;
                 }
-                .portfolio-item__type,.portfolio-item__date {
+                .partfolio-item__type,.partfolio-item__date {
                   font-size: 18px;
                   line-height: 150%;
                   color: $COLOR_TEXT_SECONDARY;
@@ -1156,7 +1157,7 @@ body{
                     font-size: 12px;
                   }
                 }
-                .portfolio-item__type {
+                .partfolio-item__type {
                   &:before{
                     content: '#';
                   }
@@ -1166,12 +1167,12 @@ body{
           }
         }
       }
-      .portfolio-dots{
+      .partfolio-dots{
         display: flex;
         width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
-        .portfolio-dot{
+        .partfolio-dot{
           display: flex;
           opacity: 0.5;
           flex-direction: column;
@@ -1220,7 +1221,7 @@ body{
           }
         }
       }
-      .portfolio-items-btns{
+      .partfolio-items-btns{
         //position: absolute;
         //bottom: 20px;
         //left: 0;
@@ -1231,7 +1232,7 @@ body{
         @media (max-width: 767px){
           flex-direction: column;
         }
-        .portfolio-items-np {
+        .partfolio-items-np {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -1248,7 +1249,7 @@ body{
             height: 66%;
             background-color: $COLOR_ACCENT;
           }
-          .portfolio-items-p, .portfolio-items-n {
+          .partfolio-items-p, .partfolio-items-n {
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -1268,7 +1269,7 @@ body{
             }
           }
         }
-        a.portfolio-items-all{
+        a.partfolio-items-all{
           margin-left: 30px;
           font-size: 18px;
           line-height: 150%;
@@ -1798,6 +1799,192 @@ body{
     }
   }
 }
+
+.reviews{
+  .container {
+    .reviews__wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .reviews__title {
+        position: absolute;
+        top: $HEADER_HEIGHT;
+        left: 0;
+        overflow-x: visible;
+        opacity: 0.1;
+        //z-index: -1;
+        //position: absolute;
+        //top: 160px;
+        @media (max-width: 767px){
+          top: $HEADER_HEIGHT_M;
+        }
+        &>span{
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-weight: bold;
+          font-size: 200px;
+          line-height: 100%;
+          color: $COLOR_ACCENT;
+          text-transform: uppercase;
+          @media (max-width: 767px){
+            font-size: 56px;
+            //position: static;
+          }
+        }
+      }
+      .reviews__slider {
+        width: 50%;
+        padding-top: 140px;
+        position: relative;
+        margin-bottom: 20px;
+        @media (max-width: 991px){
+          width: 100%;
+        }
+        @media (max-width: 767px){
+          padding-top: 49px;
+        }
+        &:before{
+          content: '';
+          width: 115px;
+          height: 115px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-image: url('../img/UIKit/quote.png');
+          background-size: contain;
+          background-position: center center;
+          background-repeat: no-repeat;
+          @media (max-width: 575px){
+            width: 39px;
+            height: 39px;
+          }
+        }
+        &:after{
+          content: '';
+          width: 200px;
+          height: 200px;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          opacity: 0.1;
+          z-index: -1;
+          transform: rotate(180deg);
+          background-image: url('../img/UIKit/quote.png');
+          background-size: contain;
+          background-position: center center;
+          background-repeat: no-repeat;
+          @media (max-width: 767px){
+            width: 130px;
+            height: 130px;
+          }
+        }
+        .review-slide {
+          width: 100%;
+          //border: 1px solid #000;
+          &__text {
+            p {
+              font-size: 18px;
+              line-height: 150%;
+              color: $COLOR_TEXT;
+              @media (max-width: 575px){
+                font-size: 14px;
+              }
+            }
+          }
+          &__author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            //border: 1px solid #000;
+            margin-top: 10px;
+            flex-direction: column;
+            img{
+              width: 89px;
+              height: 89px;
+              border-radius: 50%;
+              @media (max-width: 767px){
+                width: 50px;
+                height: 50px;
+              }
+            }
+            span{
+              font-weight: bold;
+              font-size: 14px;
+              line-height: 150%;
+              text-align: center;
+              color: $COLOR_TEXT;
+              @media (max-width: 767px){
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      .reviews__bottom {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        //border: 1px solid #000;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 767px){
+          justify-content: center;
+        }
+        .reviews-slide-np {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 36px;
+          width: 233px;
+          position: relative;
+          &:before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 66%;
+            background-color: $COLOR_ACCENT;
+          }
+          .reviews-slide-p, .reviews-slide-n {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            svg {
+              height: 100%;
+              fill: $COLOR_ACCENT;
+              line {
+                stroke: $COLOR_ACCENT;
+              }
+            }
+            span{
+              font-size: 24px;
+              line-height: 150%;
+              color: $COLOR_TEXT;
+            }
+          }
+        }
+        .copyright {
+          font-size: 18px;
+          color: $COLOR_GRAY;
+          box-sizing: border-box;
+          @media (max-width: 767px){
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  
+}
+
 
 .footer{
   background: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/backgrounds/footer.jpg');

@@ -31,24 +31,24 @@ $(document).ready(function () {
   });
 
 
-  $('.portfolio-items').slick({
+  $('.partfolio-items').slick({
     slidesToShow: 1,
     arrows: true,
     infinite: false,
     variableWidth: true,
-    prevArrow: '.portfolio-items-p',
-    nextArrow: '.portfolio-items-n',
+    prevArrow: '.partfolio-items-p',
+    nextArrow: '.partfolio-items-n',
   });
-  const dots = document.querySelectorAll('.portfolio-dot');
-  const dotsBlock = document.querySelector('.portfolio-dots');
+  const dots = document.querySelectorAll('.partfolio-dot');
+  const dotsBlock = document.querySelector('.partfolio-dots');
   dots.forEach((dot, id) => {
     dot.addEventListener('click', () => {
       if (!dot.classList.contains('active')) {
-        $('.portfolio-items').slick('slickGoTo', id);
+        $('.partfolio-items').slick('slickGoTo', id);
       }
     })
   })
-  $('.portfolio-items').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+  $('.partfolio-items').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
     dots.forEach((dot, id) => {
       if (id === nextSlide) {
         dot.classList.add('active');
@@ -63,7 +63,11 @@ $(document).ready(function () {
       }
     })
   });
-
+  $('.reviews__slider').slick({
+    prevArrow: '.reviews-slide-p',
+    nextArrow: '.reviews-slide-n',
+    infinite: false,
+  });
 });
 
 
@@ -83,9 +87,6 @@ document.body.onload = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-
-
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -96,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
-  const portfolio_wrapper = document.querySelector('.partfolio__wrapper');
+  const partfolio_wrapper = document.querySelector('.partfolio__wrapper');
   const news_wrapper = document.querySelector('.news__wrapper');
   const intro_container = document.querySelector('.intro>.container');
-  const portfolio_container = document.querySelector('.partfolio>.container');
+  const partfolio_container = document.querySelector('.partfolio>.container');
   const team_circles = document.querySelectorAll('.team-circle');
   const team_name = document.querySelector('.team__info-name');
   const team_text = document.querySelector('.team__info-text');
@@ -113,12 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuLinks = document.querySelectorAll('.menu-link');
   //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
-  let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
+  let partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
   let timeout = 400;
-  let portfolio_left_offset = portfolio_container_left - intro_container_left;
-  portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
-  news_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
+  let partfolio_left_offset = partfolio_container_left - intro_container_left;
+  partfolio_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
+  news_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
 
 
 
@@ -246,9 +247,9 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   window.addEventListener('resize', () => {
     intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
-    portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
-    portfolio_left_offset = portfolio_container_left - intro_container_left;
-    portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
+    partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));
+    partfolio_left_offset = partfolio_container_left - intro_container_left;
+    partfolio_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
 
   })
   //PopUp
@@ -432,6 +433,9 @@ document.addEventListener("DOMContentLoaded", () => {
         menu.classList.add('black')
       }
       else if (destination.index == 5) {
+        menu.classList.add('black')
+      }
+      else if (destination.index == 6) {
         menu.classList.add('black')
       }
       else {

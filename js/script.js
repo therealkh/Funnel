@@ -10,12 +10,12 @@ $(document).ready(function () {
 
   $('.services__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
     const parent = document.querySelector('.services')
-    console.log(parent);
+    //console.log(parent);
     const slides = document.querySelectorAll('.services__slider .single-slide');
     //console.log(slides);
     const bgUrl = `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('${slides[nextSlide].getAttribute('data-bg')}')`;
     parent.style.backgroundImage = bgUrl;
-    console.log(bgUrl);
+    //console.log(bgUrl);
   });
 
   $('.news-items').slick({
@@ -69,6 +69,7 @@ document.body.onload = () => {
   const preloader = document.querySelector('.preloader');
   setTimeout(() => {
     preloader.classList.add('hidden');
+
   }, 500)
   setTimeout(() => {
     preloader.style.display = 'none'
@@ -76,6 +77,15 @@ document.body.onload = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.hash) {
+    let anchor = window.location.hash;
+    window.location.hash = '';
+    setTimeout(() => {
+      fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+    }, 3000);
+  }
+
+
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -99,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const team_all_m = document.querySelector('.team-all-mobile');
   const team_all_btn = document.getElementById('team_see_all');
   const news = document.querySelectorAll('.news-item');
+  const gotoSlideAnchors = document.querySelectorAll('.gotoSlide');
+  const menuLinks = document.querySelectorAll('.menu-link');
   //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let portfolio_container_left = (parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(portfolio_container).getPropertyValue("padding-left")));
@@ -123,6 +135,23 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   //Listeners
+  menuLinks.forEach((link, id) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      let anchor = link.getAttribute('href');
+      fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+    })
+  })
+  gotoSlideAnchors.forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      fullpage_api.moveTo(3);
+      const target = e.target;
+      let slideId = parseInt(target.getAttribute('data-slide-id'));
+      $('.services__slider').slick('slickGoTo', slideId);
+    })
+
+  })
   menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
     if (menuBtn.classList.contains('active')) {
@@ -250,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function openPopup(popup) {
-    console.log(popup);
+    //console.log(popup);
     if (popup && unlock) {
       const popupActive = document.querySelector('.popup.opened');
       if (popupActive) {
@@ -381,13 +410,44 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.opacity = 1;
     })
   }
-
-
+  function getSectionIdByAnchor(anchor) {
+    anchor = anchor.slice(anchor.indexOf('#') + 1);
+    //console.log(anchor);
+    let secID = 0;
+    switch (anchor) {
+      case 'intro':
+        secID = 1;
+        break;
+      case 'problems':
+        secID = 2;
+        break;
+      case 'services':
+        secID = 3;
+        break;
+      case 'partfolio':
+        secID = 4;
+        break;
+      case 'team':
+        secID = 5;
+        break;
+      case 'news':
+        secID = 6;
+        break;
+      case 'footer':
+        secID = 7;
+        break;
+      default:
+        secID = 0;
+        break;
+    }
+    return secID;
+  }
   //Elements
   new fullpage('#fullpage', {
     onLeave: function (origin, destination, direction) {
       let leavingSection = this;
-
+      //console.log(origin);
+      //console.log(destination);
       //after leaving section 1
       if (origin.index == 0 && direction == 'down') {
         header.classList.remove('ontop');

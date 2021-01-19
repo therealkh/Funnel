@@ -275,10 +275,6 @@ body{
         background-position: 0 center;
         background-repeat: no-repeat;
         &.black{
-          //background: url('../img/UIKit/menu-bg-black.png');
-          //background-size: cover;
-          //background-position: 0 center;
-          //background-repeat: no-repeat;
           ul{
             li{
               a{
@@ -1325,6 +1321,9 @@ body{
       justify-content: flex-start;
       align-items: flex-end;
       position: relative;
+      @media (min-width: 1025px){
+        margin-left: -150px;
+      }
       @media (max-width: 1024px){
         flex-direction: column-reverse;
         justify-content: flex-start;
@@ -1332,14 +1331,20 @@ body{
         align-items: center;
       }
       .team__img {
-        width: 40%;
+        width: 50%;
         transition: all 0.3s;
+        @media (max-width: 1600px){
+          //width: 35%;
+        }
+        @media (max-width: 1070px){
+          //width: 40%;
+        }
         @media (max-width: 1199px) and (min-width: 992px){
-          margin-left: -100px;
+          margin-left: -50px;
         }
         @media (max-width: 1024px){
           width: auto;
-          height: 65%;
+          height: 50%;
         }
         @media (max-width: 767px){
           height: 50%;
@@ -1382,6 +1387,17 @@ body{
           font-size: 54px;
           line-height: 100%;
           color: $COLOR_WHITE;
+          position: relative;
+          padding-top: 84px;
+          &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 60px;
+            background-color: $COLOR_WHITE;
+          }
           span {
             color: $COLOR_ACCENT;
             display: block;
@@ -1434,34 +1450,34 @@ body{
         }
       }
       .team-all{
-        position: absolute;
-        top: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         padding-top: $HEADER_HEIGHT;
-        left: 82%;
-        transform: translateX(0);
+        position: absolute;
+        top: 0;
+        left: 90%;
         transition: all 0.7s;
-        @media (max-width: 1024px) and (min-width:992px){
-          left: 75%;
-          &:not(.opened):hover{
-            left: 65%;
-          }
+        @media (max-width: 1600px){
+        }
+        @media (max-width: 1360px){
+        }
+        @media (max-width: 1070px){
         }
         &.opened{
-          left: 50%;
-          //width: 100vw;
+          left: calc(50% + 150px);
           transform: translateX(-50%);
+          @media (max-width: 1024px){
+            left: 50%;
+          }
         }
-        @media (max-width: 991px){
-          left: 300%;
-          display: none;
+        @media (max-width: 1024px){
+          left: 150%;
         }
         @media (min-width: 1025px){
           &:not(.opened):hover{
-            left: 72%;
+            transform: translateX(-20%);
           }
         }
         @media (max-width: 767px){

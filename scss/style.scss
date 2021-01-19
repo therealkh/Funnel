@@ -376,50 +376,60 @@ body{
       
     }
     .header__lang {
-      //border: 1px solid #000;
-      margin-right: 20px;
-      padding: 3px 3px 3px 25px;
+      position: relative;
+      background-color: transparent;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
-      position: relative;
-      &:hover{
-        ul{
-          height: 60px;
-        }
-      }
+      padding: 5px;
+      transition: all 0.2s;
+      cursor: pointer;
       ul{
-        position: absolute;
-        //background-color: #ccc;
-        left: 0;
-        height: 20px;
-        overflow: hidden;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
         list-style: none;
         margin: 0;
-        padding: 0;
+        padding: 5px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: $COLOR_WHITE;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        visibility: hidden;
+        opacity: 0;
         transition: all 0.2s;
         li{
-          font-size: 14px;
-          line-height: 100%;
-          padding: 3px 0;
-          //height: 18px;
-          a{
-            font-family: Gotham Pro;
-            color: $COLOR_TEXT;
-            text-decoration: none;
-          }
+          margin: 2px 0;
         }
       }
       svg{
         fill: $COLOR_TEXT;
         width: 15px;
         height: 12px;
-        //background-color: #ccc;
-        //padding: 0 1px;
+        margin-left: 5px;
+        transition: all 0.2s;
+      }
+      a,span{
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 16px;
+        color: $COLOR_TEXT;
+      }
+      &.opened{
+        background-color: $COLOR_WHITE;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        a,span,li,ul{
+          color: $COLOR_TEXT!important;
+        }
+        ul{
+          visibility: visible;
+          opacity: 1;
+        }
+        svg{
+          transform: rotate(180deg);
+          fill: $COLOR_TEXT!important;
+        }
       }
     }
     .header__menu-btn {
@@ -493,7 +503,7 @@ body{
     .header__wrapper{
       background-color: transparent;
       p,a{
-        color: $COLOR_WHITE!important;
+        color: $COLOR_WHITE;
       }
       .header__discriptor{
         p{
@@ -501,6 +511,9 @@ body{
         }
       }
       .header__lang{
+        a,span{
+          color: $COLOR_WHITE;
+        }
         svg{
           fill: $COLOR_WHITE;
         }
@@ -1803,6 +1816,8 @@ body{
         width: 50%;
         height: 100%;
         padding: 50px 10px 50px 0;
+        display: flex;
+        align-items: center;
         @media (max-width: 1024px){
           padding: 30px;
           height: 50%;

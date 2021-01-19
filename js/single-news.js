@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(wrappers);
   let unlock = true;
   let timeout = 400;
-
+  const lang = document.querySelector('.header__lang');
+  lang.addEventListener('click', () => {
+    lang.classList.toggle('opened');
+  })
+  const map = document.querySelector('.footer-left__map');
+  map.style.maxHeight = `${map.clientWidth}px`;
   //Listeners
   menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');

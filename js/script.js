@@ -108,6 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
   portfolio_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
   news_wrapper.style.marginLeft = `-${portfolio_left_offset}px`;
 
+
+
+  const lang = document.querySelector('.header__lang');
+  lang.addEventListener('click', () => {
+    lang.classList.toggle('opened');
+  })
+  const map = document.querySelector('.footer-left__map');
+  map.style.maxHeight = `${map.clientWidth}px`;
+
   news.forEach((item, index) => {
     let id = item.querySelector('.news-item__id');
     id.textContent = `0${index + 1}`;

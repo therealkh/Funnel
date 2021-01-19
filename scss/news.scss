@@ -579,13 +579,14 @@ body{
         .news__title{
           text-transform: uppercase;
           font-weight: bold;
-          font-size: 200px;
+          font-size: 160px;
+          white-space: nowrap;
           line-height: 100%;
           color: $COLOR_ACCENT;
           opacity: 0.1;
           position: fixed;
           z-index: -1;
-          @media (max-width: 991px){
+          @media (max-width: 1024px){
             font-size: 125px;
           }
           @media (max-width: 767px){
@@ -638,8 +639,8 @@ body{
               width: 245px;
               height: 245px;
             }
-            @media (max-width: 530px){
-              width: calc(45% - 10px);
+            @media (max-width: 575px){
+              width: calc(50% - 10px);
               margin-right: 5px;
               margin-left: 5px;
               height: auto;
@@ -666,8 +667,14 @@ body{
                 font-weight: bold;
                 font-size: 24px;
                 @include max-text-lines(2);
+                @media (max-width: 767px){
+                  font-size: 18px;
+                }
                 @media (max-width: 530px){
                   font-size: 16px;
+                }
+                @media (max-width: 375px){
+                  font-size: 14px;
                 }
               }
               .news-item__description {
@@ -676,7 +683,14 @@ body{
                 line-height: 150%;
                 color: $COLOR_TEXT_SECONDARY;
                 margin: 12px 0;
+                @media (max-width: 767px){
+                  font-size: 14px;
+                  margin: 5px 0;
+                }
                 @media (max-width: 530px){
+                  @include max-text-lines(1);
+                }
+                @media (max-width: 510px){
                   display: none;
                 }
               }
@@ -688,17 +702,15 @@ body{
                   justify-content: center;
                   align-items: flex-start;
                 }
-                .news-item__type,.news-item__date {
+                .news-item__date {
                   font-size: 18px;
                   line-height: 150%;
                   color: $COLOR_TEXT_SECONDARY;
+                  @media (max-width: 767px){
+                    font-size: 14px;
+                  }
                   @media (max-width: 530px){
                     font-size: 12px;
-                  }
-                }
-                .news-item__type {
-                  &:before{
-                    content: '#';
                   }
                 }
               }
@@ -706,11 +718,16 @@ body{
             &__id{
               font-weight: bold;
               font-size: 36px;
+              line-height: 100%;
               color: $COLOR_ACCENT;
               padding: 24px;
               position: absolute;
               top: 0;
               left: 0;
+              @media (max-width: 767px){
+                padding: 15px;
+                font-size: 28px;
+              }
               @media (max-width: 450px){
                 font-size: 20px;
                 padding: 12px;

@@ -258,7 +258,8 @@ body{
       }
       .header__links{
         position: absolute;
-        right: -110%;
+        left: 0;
+        visibility: hidden;
         opacity: 0;
         top: $HEADER_HEIGHT;
         height: calc(100vh - 100px);
@@ -269,8 +270,15 @@ body{
         padding-right: 20%;
         z-index: 100;
         transition: all 0.3s;
-        //background-color: rgba($color: #000000, $alpha: 0.0);
+        background: url('../img/UIKit/menu-bg.png');
+        background-size: cover;
+        background-position: 0 center;
+        background-repeat: no-repeat;
         &.black{
+          //background: url('../img/UIKit/menu-bg-black.png');
+          //background-size: cover;
+          //background-position: 0 center;
+          //background-repeat: no-repeat;
           ul{
             li{
               a{
@@ -322,7 +330,7 @@ body{
           }
         }
         &.active{
-          right: 0;
+          visibility: visible;
           opacity: 1;
           ul{
             li{

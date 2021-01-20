@@ -274,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (popups.length > 0) {
     for (let i = 0; i < popups.length; i++) {
+      popups[i].style.display = 'none';
       popups[i].addEventListener('click', (event) => {
         if (!event.target.closest('.popup__content')) {
           closePopup(popups[i]);
@@ -291,7 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
       else {
         bodyLock();
       }
-      fullpage_api.setAllowScrolling(false);
+      //fullpage_api.setAllowScrolling(false);
+      popup.style.display = 'flex'
       popup.classList.add('opened');
       popup.addEventListener('click', (event) => {
         if (!event.target.closest('.popup__content')) {
@@ -302,10 +304,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function closePopup(popup, doUnlock = true) {
     if (unlock) {
+      //fullpage_api.setAllowScrolling(true);
       popup.classList.remove('opened');
       if (doUnlock) {
         bodyUnlock();
       }
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, timeout);
     }
   }
   function openResultPopup(msg = 'Спасибо! Ваша заявка была отправлена.') {
@@ -417,6 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Elements
   new fullpage('#fullpage', {
+    normalScrollElements: '.popup',
     onLeave: function (origin, destination, direction) {
       let leavingSection = this;
       //console.log(origin);

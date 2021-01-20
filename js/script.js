@@ -274,7 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (popups.length > 0) {
     for (let i = 0; i < popups.length; i++) {
-      popups[i].style.display = 'none';
       popups[i].addEventListener('click', (event) => {
         if (!event.target.closest('.popup__content')) {
           closePopup(popups[i]);
@@ -284,7 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function openPopup(popup) {
     fullpage_api.setAllowScrolling(false);
-    //console.log(popup);
     if (popup && unlock) {
       const popupActive = document.querySelector('.popup.opened');
       if (popupActive) {
@@ -293,7 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
       else {
         bodyLock();
       }
-      popup.style.display = 'flex'
       popup.classList.add('opened');
       popup.addEventListener('click', (event) => {
         if (!event.target.closest('.popup__content')) {
@@ -309,9 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (doUnlock) {
         bodyUnlock();
       }
-      setTimeout(() => {
-        popup.style.display = 'none';
-      }, timeout);
     }
   }
   function openResultPopup(msg = 'Спасибо! Ваша заявка была отправлена.') {
@@ -365,47 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //Functions
-  function send(form, event, php, succesMSG) {
-    const btn = form.querySelector('#formSubmit');
-
-    const oldTextContent = btn.textContent;
-    btn.textContent = 'Отправка...';
-    btn.setAttribute('disabled', 'disabled');
-    console.log("Отправка запроса");
-    event.preventDefault ? event.preventDefault() : event.returnValue = false;
-    var req = new XMLHttpRequest();
-    req.open('POST', php, true);
-    req.onload = function () {
-      if (req.status >= 200 && req.status < 400) {
-        json = JSON.parse(this.response); // Ебанный internet explorer 11
-        console.log(json);
-
-        // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
-        if (json.result == "success") {
-          // Если сообщение отправлено
-          btn.textContent = oldTextContent;
-          btn.removeAttribute('disabled');
-          openResultPopup(succesMSG);
-        } else {
-          // Если произошла ошибка
-          btn.textContent = oldTextContent;
-          btn.removeAttribute('disabled');
-          openResultPopup(`Ой... Ошибка. Сообщение не отправлено (${json.result})`);
-        }
-        // Если не удалось связаться с php файлом
-      } else {
-        btn.textContent = oldTextContent;
-        btn.removeAttribute('disabled');
-        openResultPopup('Ошибка сервера. Код ошибки: ' + req.status);
-        //alert("Ошибка сервера. Номер: " + req.status);
-      }
-    };
-
-    // Если не удалось отправить запрос. Стоит блок на хостинге
-    req.onerror = function () { alert("Ошибка отправки запроса"); };
-    req.send(new FormData(event.target));
-  }
-
   function openMenu() {
     menu.classList.add('active')
     fullpage_api.setAllowScrolling(false);
@@ -420,6 +373,9 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.opacity = 1;
     })
   }
+
+
+
 
   //Elements
   new fullpage('#fullpage', {
@@ -483,4 +439,45 @@ function getSectionIdByAnchor(anchor) {
       break;
   }
   return secID;
+}
+
+function send(form, event, php, succesMSG) {
+  const btn = form.querySelector('#formSubmit');
+
+  const oldTextContent = btn.textContent;
+  btn.textContent = 'Отправка...';
+  btn.setAttribute('disabled', 'disabled');
+  console.log("Отправка запроса");
+  event.preventDefault ? event.preventDefault() : event.returnValue = false;
+  var req = new XMLHttpRequest();
+  req.open('POST', php, true);
+  req.onload = function () {
+    if (req.status >= 200 && req.status < 400) {
+      json = JSON.parse(this.response); // Ебанный internet explorer 11
+      console.log(json);
+
+      // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
+      if (json.result == "success") {
+        // Если сообщение отправлено
+        btn.textContent = oldTextContent;
+        btn.removeAttribute('disabled');
+        openResultPopup(succesMSG);
+      } else {
+        // Если произошла ошибка
+        btn.textContent = oldTextContent;
+        btn.removeAttribute('disabled');
+        openResultPopup(`Ой... Ошибка. Сообщение не отправлено (${json.result})`);
+      }
+      // Если не удалось связаться с php файлом
+    } else {
+      btn.textContent = oldTextContent;
+      btn.removeAttribute('disabled');
+      openResultPopup('Ошибка сервера. Код ошибки: ' + req.status);
+      //alert("Ошибка сервера. Номер: " + req.status);
+    }
+  };
+
+  // Если не удалось отправить запрос. Стоит блок на хостинге
+  req.onerror = function () { alert("Ошибка отправки запроса"); };
+  req.send(new FormData(event.target));
 }

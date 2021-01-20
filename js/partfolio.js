@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll('.block__wrapper');
   const menu = document.querySelector('.header__links');
   const footer = document.querySelector('footer');
-  const pItems = document.querySelectorAll('.portfolio-item');
+  const pItems = document.querySelectorAll('.partfolio-item');
   const menuLinks = document.querySelectorAll('.menu-link');
   console.log(wrappers);
   let unlock = true;
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openPopup(document.querySelector('#result'));
   }
   function bodyLock() {
-    const lockPaddingValue = window.innerWidth - document.querySelector('section').offsetWidth + 'px';
+    const lockPaddingValue = window.innerWidth - document.querySelector('body').offsetWidth + 'px';
     //console.log(lockPaddingValue);
     if (lockPadding.length > 0) {
       for (let i = 0; i < lockPadding.length; i++) {

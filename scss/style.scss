@@ -12,6 +12,7 @@ $COLOR_WHITE: #FFFFFF;
 $COLOR_TEXT: #2F2F2F;
 $COLOR_TEXT_SECONDARY: #C4C4C4;
 $COLOR_GRAY: #444444;
+$COLOR_GREEN: #206013;
 //$COLOR_WHITE_GREY: #E5E5E5;
 //$COLOR_GREY: #C4C4C4;
 //$COLOR_LIGHT: #E7E1C9;
@@ -102,7 +103,7 @@ body{
     height: 100%;
     transition: opacity 0.2s;
     padding-top: $HEADER_HEIGHT;
-    @media (max-width: 767px){
+    @media (max-width: 800px){
       padding-top: $HEADER_HEIGHT_M;
     }
   }
@@ -175,7 +176,7 @@ body{
   position: fixed;
   z-index: 9999999;
   transition: all 0.3s;
-  @media (max-width: 767px){
+  @media (max-width: 800px){
     height: $HEADER_HEIGHT_M;
   }
   &__wrapper {
@@ -196,7 +197,7 @@ body{
       .img-wrapper {
         width: $HEADER_HEIGHT;
         height: 34px;
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           width: $HEADER_HEIGHT_M;
         }
       }
@@ -239,7 +240,7 @@ body{
         @media (max-width: 740px){
           display: none;
         }
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           height: $HEADER_HEIGHT_M;
         }
         &>a{
@@ -284,7 +285,7 @@ body{
             }
           }
         }
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           height: calc(100vh - 58px);
           top: $HEADER_HEIGHT_M;
         }
@@ -394,8 +395,6 @@ body{
         left: 0;
         width: 100%;
         background-color: $COLOR_WHITE;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
         visibility: hidden;
         opacity: 0;
         transition: all 0.2s;
@@ -415,13 +414,23 @@ body{
         text-decoration: none;
         font-size: 16px;
         color: $COLOR_TEXT;
+        &:hover{
+          color: $COLOR_HOVER;
+        }
+        &:focus{
+          color: $COLOR_PRESSED;
+        }
       }
       &.opened{
         background-color: $COLOR_WHITE;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
         a,span,li,ul{
           color: $COLOR_TEXT!important;
+          &:hover{
+          color: $COLOR_HOVER!important;
+          }
+          &:focus{
+            color: $COLOR_PRESSED!important;
+          }
         }
         ul{
           visibility: visible;
@@ -438,7 +447,7 @@ body{
       height: $HEADER_HEIGHT;
       width: $HEADER_HEIGHT;
       padding: 35px 20px;
-      @media (max-width: 767px){
+      @media (max-width: 800px){
         width: $HEADER_HEIGHT_M;
         height: $HEADER_HEIGHT_M;
         padding: 20px 10px;
@@ -798,6 +807,7 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-decoration: none;
         p{
           font-weight: bold;
           font-size: 54px;
@@ -861,6 +871,7 @@ body{
       padding: calc(20px + 100px) 0 20px 0;
       @media (max-width: 767px){
         align-items: center;
+        justify-content: center;
         padding: calc(20px + 58px) 0 20px 0;
       }
       .services__slider {
@@ -987,6 +998,9 @@ body{
         height: 36px;
         width: 233px;
         position: relative;
+        @media (max-width: 767px){
+          margin-top: 30px;
+        }
         &:before{
           content: '';
           position: absolute;
@@ -1494,7 +1508,7 @@ body{
             transform: translateX(-20%);
           }
         }
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           padding-top: $HEADER_HEIGHT_M;
         }
         &__col{
@@ -1538,7 +1552,7 @@ body{
         transition: all 0.3s;
         opacity: 0;
         visibility: hidden;
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           padding-top: $HEADER_HEIGHT_M;
         }
         .team-all-mobile-wrapper{
@@ -1816,7 +1830,7 @@ body{
         //z-index: -1;
         //position: absolute;
         //top: 160px;
-        @media (max-width: 767px){
+        @media (max-width: 800px){
           top: $HEADER_HEIGHT_M;
         }
         &>span{
@@ -2383,7 +2397,7 @@ body{
               align-items: flex-start;
               padding: 10px 20px;
               background: $COLOR_WHITE;
-              border: 1px solid $COLOR_PRESSED;
+              border: 1px solid $COLOR_GREEN;
               box-sizing: border-box;
               border-radius: 10px;
               transition: all 0.5s ease 0s;
@@ -2425,10 +2439,11 @@ body{
     }
   }
 }
-#download{
+#promo{
   .popup__content{
-    width: 500px;
+    min-width: none;
     max-width: 100%;
+    width: auto;
     padding: 60px;
     display: flex;
     justify-content: center;
@@ -2449,34 +2464,68 @@ body{
     }
   }
 }
-.downloadForm {
+.promoForm {
   width: 100%;
-  &__title {
-    //font-family: Merel;
+  &__title,&__text, &__text-sm, &__timer {
     font-weight: 900;
-    font-size: 40px;
-    line-height: $LINE_HEIGHT;
-    display: flex;
-    align-items: center;
-    text-align: center;
+    font-size: 30px;
+    line-height: 100%;
     color: $COLOR_ACCENT;
-    margin-bottom: 20px;
-    @media (max-width: 900px){
-      font-size: 35px;
+    text-align: center;
+    line-height: 150%;
+    @media (max-width: 676px){
+      font-size: 23px;
     }
-    @media (max-width: 780px){
-      font-size: 30px;
+    @media (max-width: 400px){
+      font-size: 16px;
     }
-    @media (max-width: 575px){
-      font-size: 25px;
+  }
+  &__text{
+    font-size: 25px;
+    text-align: center;
+    line-height: 150%;
+    span{
+      display: block;
+    }
+    @media (max-width: 676px){
+      font-size: 20px;
+    }
+    @media (max-width: 510px){
+      font-size: 18px;
+    }
+    @media (max-width: 400px){
+      font-size: 14px;
+    }
+  }
+  &__timer{
+    font-size: 100px;
+    line-height: 100%;
+    text-align: center;
+    line-height: 150%;
+    @media (max-width: 676px){
+      font-size: 60px;
+    }
+  }
+  &__text-sm{
+    margin-top: 24px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 150%;
+    @media (max-width: 510px){
+      font-size: 14px;
     }
   }
   &__form {
+    margin-top: 10px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     form {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       width: 400px;
       max-width: 100%;
@@ -2488,7 +2537,114 @@ body{
         align-items: flex-start;
         padding: 10px 20px;
         background: $COLOR_WHITE;
-        border: 1px solid $COLOR_PRESSED;
+        border: 1px solid $COLOR_GREEN;
+        box-sizing: border-box;
+        border-radius: 10px;
+        transition: all 0.5s ease 0s;
+        width: 100%;
+        &:focus{
+          border: 1px solid $COLOR_ACCENT;
+        }
+      }
+      &>button{
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: $COLOR_ACCENT;
+        border-radius: 14px;
+        border: 2px solid $COLOR_ACCENT;
+        color: $COLOR_WHITE;
+        text-decoration: none;
+        //font-family: Calibri;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
+        transition: all 0.2s;
+        &:hover{
+          background-color: $COLOR_HOVER;
+          border-color: $COLOR_HOVER;
+        }
+        &:active{
+          border-color: $COLOR_PRESSED;
+          background-color: $COLOR_PRESSED;
+        }
+        @media (max-width: 767px){
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+#diagnostics{
+  .popup__content{
+    min-width: none;
+    max-width: none;
+    width: auto;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    @media (max-width: 920px){
+      padding: 60px 80px;
+    }
+    @media (max-width: 820px){
+      padding: 45px 70px;
+    }
+    @media (max-width: 575px){
+      padding: 20px 30px;
+      max-height: none;
+    }
+    @media (max-height: 600px){
+      max-height: none;
+    }
+  }
+}
+.diagnosticsForm {
+  width: 100%;
+  &__title,&__text {
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 100%;
+    color: $COLOR_ACCENT;
+    text-align: center;
+    line-height: 150%;
+  }
+  &__text{
+    margin-top: 24px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 150%;
+    span{
+      display: block;
+    }
+  }
+  &__form {
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      max-width: 100%;
+      &>input{
+        margin: 13px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10px 20px;
+        background: $COLOR_WHITE;
+        border: 1px solid $COLOR_GREEN;
         box-sizing: border-box;
         border-radius: 10px;
         transition: all 0.5s ease 0s;
@@ -2671,11 +2827,41 @@ button[disabled]{
       //max-height: 100%;
       background-color: $COLOR_WHITE;
       padding: 80px 110px;
-      border-radius: 10px;
       position: relative;
       transition: all 0.4s;
       transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
-
+      & .closer{
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        //border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+        svg{
+          height: 16px;
+          width: 16px;
+          transition: all 0.2s;
+          path{
+            fill: $COLOR_ACCENT;
+          }
+        }
+        &:hover{
+          svg path{
+            fill: $COLOR_HOVER
+          }
+        }
+        &:active{
+          svg path{
+            fill: $COLOR_PRESSED
+          }
+        }
+      }
       //box-sizing: padding-box;
       @media (max-width: 920px){
         padding: 60px 80px;

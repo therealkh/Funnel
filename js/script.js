@@ -87,6 +87,7 @@ document.body.onload = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -112,14 +113,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const news = document.querySelectorAll('.news-item');
   const gotoSlideAnchors = document.querySelectorAll('.gotoSlide');
   const menuLinks = document.querySelectorAll('.menu-link');
+  const promoPopup = document.getElementById('promo');
+  setTimeout(() => {
+    openPopup(promoPopup)
+    startPromoTimer();
+  }, 30000);
   //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
   let timeout = 400;
+  let promo_timeOut = 300;
   let partfolio_left_offset = partfolio_container_left - intro_container_left;
   partfolio_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
   news_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
+
+  const form = document.querySelector('form#sendForm');
+  const catalogForm = document.querySelector('form#sendDiagnostics');
+  const promoForm = document.querySelector('form#sendPromo');
+  form.onsubmit = (event) => {
+    send(form, event, 'mailer/sendForm.php', 'Спасибо! Ваша заявка была отправлена.')
+  }
+  promoForm.onsubmit = (event) => {
+    send(promoForm, event, 'mailer/sendPromo.php', 'Спасибо! Ваша заявка была отправлена.')
+  }
+  catalogForm.onsubmit = (event) => {
+    send(catalogForm, event, 'mailer/sendDiagnostics.php', 'Ваша заявка была отправлена. Спасибо за Ваш интерес!')
+  }
 
 
 
@@ -359,6 +379,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   //Functions
+  function startPromoTimer() {
+    let promoTimer = setInterval(() => {
+      const timerNode = document.getElementById('promo-time');
+      let min = Math.floor(promo_timeOut / 60);
+      let sec = promo_timeOut - min * 60;
+      let secS = ''
+      let minS = ''
+      if (sec < 10) {
+        secS = `0${sec}`;
+        console.log(secS);
+      }
+      else {
+        secS = `${sec}`;
+      }
+
+
+      if (min < 10) {
+        minS = `0${min}`
+        console.log(minS);
+      }
+      else {
+        minS = `${min}`;
+      }
+
+
+      let timeStr = `${minS}:${secS}`;
+      console.log(timeStr);
+      timerNode.textContent = timeStr;
+      if (promo_timeOut <= 0) {
+        clearInterval(promoTimer);
+        if (promoPopup.classList.contains('opened')) {
+          closePopup(promoPopup);
+        }
+      }
+      promo_timeOut--;
+    }, 1000);
+  }
+  function openResultPopup(msg = 'Спасибо! Ваша заявка была отправлена.') {
+    const msgNode = document.querySelector('#result .result-msg');
+    msgNode.textContent = msg;
+    openPopup(document.querySelector('#result'));
+  }
   function openMenu() {
     menu.classList.add('active')
     fullpage_api.setAllowScrolling(false);
@@ -372,6 +434,46 @@ document.addEventListener("DOMContentLoaded", () => {
     wrappers.forEach((item, index, arr) => {
       item.style.opacity = 1;
     })
+  }
+  function send(form, event, php, succesMSG) {
+    const btn = form.querySelector('#formSubmit');
+
+    const oldTextContent = btn.textContent;
+    btn.textContent = 'Отправка...';
+    btn.setAttribute('disabled', 'disabled');
+    console.log("Отправка запроса");
+    event.preventDefault ? event.preventDefault() : event.returnValue = false;
+    var req = new XMLHttpRequest();
+    req.open('POST', php, true);
+    req.onload = function () {
+      if (req.status >= 200 && req.status < 400) {
+        json = JSON.parse(this.response); // Ебанный internet explorer 11
+        console.log(json);
+
+        // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
+        if (json.result == "success") {
+          // Если сообщение отправлено
+          btn.textContent = oldTextContent;
+          btn.removeAttribute('disabled');
+          openResultPopup(succesMSG);
+        } else {
+          // Если произошла ошибка
+          btn.textContent = oldTextContent;
+          btn.removeAttribute('disabled');
+          openResultPopup(`Ой... Ошибка. Сообщение не отправлено (${json.result})`);
+        }
+        // Если не удалось связаться с php файлом
+      } else {
+        btn.textContent = oldTextContent;
+        btn.removeAttribute('disabled');
+        openResultPopup('Ошибка сервера. Код ошибки: ' + req.status);
+        //alert("Ошибка сервера. Номер: " + req.status);
+      }
+    };
+
+    // Если не удалось отправить запрос. Стоит блок на хостинге
+    req.onerror = function () { alert("Ошибка отправки запроса"); };
+    req.send(new FormData(event.target));
   }
 
 
@@ -441,43 +543,3 @@ function getSectionIdByAnchor(anchor) {
   return secID;
 }
 
-function send(form, event, php, succesMSG) {
-  const btn = form.querySelector('#formSubmit');
-
-  const oldTextContent = btn.textContent;
-  btn.textContent = 'Отправка...';
-  btn.setAttribute('disabled', 'disabled');
-  console.log("Отправка запроса");
-  event.preventDefault ? event.preventDefault() : event.returnValue = false;
-  var req = new XMLHttpRequest();
-  req.open('POST', php, true);
-  req.onload = function () {
-    if (req.status >= 200 && req.status < 400) {
-      json = JSON.parse(this.response); // Ебанный internet explorer 11
-      console.log(json);
-
-      // ЗДЕСЬ УКАЗЫВАЕМ ДЕЙСТВИЯ В СЛУЧАЕ УСПЕХА ИЛИ НЕУДАЧИ
-      if (json.result == "success") {
-        // Если сообщение отправлено
-        btn.textContent = oldTextContent;
-        btn.removeAttribute('disabled');
-        openResultPopup(succesMSG);
-      } else {
-        // Если произошла ошибка
-        btn.textContent = oldTextContent;
-        btn.removeAttribute('disabled');
-        openResultPopup(`Ой... Ошибка. Сообщение не отправлено (${json.result})`);
-      }
-      // Если не удалось связаться с php файлом
-    } else {
-      btn.textContent = oldTextContent;
-      btn.removeAttribute('disabled');
-      openResultPopup('Ошибка сервера. Код ошибки: ' + req.status);
-      //alert("Ошибка сервера. Номер: " + req.status);
-    }
-  };
-
-  // Если не удалось отправить запрос. Стоит блок на хостинге
-  req.onerror = function () { alert("Ошибка отправки запроса"); };
-  req.send(new FormData(event.target));
-}

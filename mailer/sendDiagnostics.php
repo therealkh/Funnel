@@ -5,17 +5,27 @@ require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
 
 // Переменные, которые отправляет пользователь
-$username = $_POST['name'];
-$phonenumber = $_POST['phone'];
+$company = $_POST['company'];
+$phone = $_POST['phone'];
 $email = $_POST['email'];
-$msg = $_POST['msg'];
+$company_type = $_POST['company_type'];
+$insta_link = $_POST['insta_link'];
+$fb_link = $_POST['fb_link'];
+$site_link = $_POST['site_link'];
+$rivals = $_POST['rivals'];
 
 // Формирование самого письма
-$title = "Новая заявка на КП от клиента на сайте Funnel";
+$title = "Заявка на диагностику от клиента.";
 $body = "
-<b>Имя:</b> $username<br>
-<b>Почта:</b> $email<br><br>
-<b>Телефон:</b> $phonenumber<br><br>
+<h2>Новая заявка от клиента на сайте Funnel</h2><br><br><br>
+<br>Название компании:</br> $company<br>
+<b>Телефон:</b> $phone<br>
+<b>E-mail:</b> $email<br>
+<b>Направление компании:</b> $company_type<br>
+<b>Instagram:</b> $insta_link<br>
+<b>Facebook:</b> $fb_link<br>
+<b>Сайт компании:</b> $site_link<br>
+<b>Конкуренты:</b> $rivals<br>
 ";
 
 // Настройки PHPMailer

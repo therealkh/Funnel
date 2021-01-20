@@ -52,7 +52,7 @@
       <div class=" header__right">
         <div class="header__mobile-menu">
           <div class="header__contacts">
-            <a href="#download" class="anchor popup-open">Свяжитесь с нами</a>
+            <a href="#diagnostics" class="anchor popup-open">Свяжитесь с нами</a>
             <a href="tel:+999999999999">+999(99) 999 99 99</a>
             <div class="socials">
               <a href="http://www.instagram.com/funnel.uz/" target="_blank" rel="noopener noreferrer">
@@ -136,12 +136,12 @@
               <h1>Digital <span>Агенство</span></h1>
               <p>Увеличим количество клиентов Вашего бизнеса от 30% до 500% за 3 месяца по Американской методологии
                 маркетинга</p>
-              <a href="#partfolio-popup" class="popup-open theme-btn">Оставить заявку</a>
+              <a href="#form" class="popup-open theme-btn">Оставить заявку</a>
             </div>
           </div>
         </div>
         <div class="intro__contacts">
-          <a href="#footer" class="anchor">Свяжитесь с нами</a>
+          <a href="#form" class="anchor popup-open">Свяжитесь с нами</a>
           <a href="tel:+999999999999">+999(99) 999 99 99</a>
           <div class="socials">
             <a href="http://www.instagram.com/funnel.uz/" target="_blank" rel="noopener noreferrer">
@@ -199,7 +199,7 @@
                 <p>НИЗКАЯ УЗНАВАЕМОСТЬ</p>
               </div>
             </div>
-            <div class="solution">
+            <a class="solution menu-link" href="#services">
               <p>Решение тут</p>
               <div class="solution-arrow">
                 <svg width="40" height="64" viewBox="0 0 40 64" xmlns="http://www.w3.org/2000/svg">
@@ -207,7 +207,7 @@
                   <path d="M20 40L2.67949 10L37.3205 10L20 40Z" />
                 </svg>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@
                     <p>Оставьте заявку и через 7 дней Вы узнаете свои плюсы и минусы перед 3 топовыми конкурентами</p>
                   </div>
                   <div class="service__btn">
-                    <a href="#form" class="popup-open theme-btn">Оставить заявку</a>
+                    <a href="#diagnostics" class="popup-open theme-btn">Оставить заявку</a>
                   </div>
 
                 </div>
@@ -990,17 +990,55 @@
     </div>
   </div>
 
-  <div id="download" class="popup">
+  <div id="promo" class="popup">
     <div class="popup__body">
       <div class="popup__content">
-        <div class="downloadForm">
-          <div class="downloadForm__title">Оставьте заявку и получите каталог</div>
-          <div class="downloadForm__form">
-            <form action="" id="sendCatalog">
+        <div class="closer popup-close">
+          <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+          </svg>
+        </div>
+        <div class="promoForm">
+          <div class="promoForm__title">ОТВЕТЬТЕ НА НЕСКОЛЬКО ВОПРОСОВ</div>
+          <div class="promoForm__timer" id="promo-time">00:00</div>
+          <div class="promoForm__text">Получите маркетинговую диагностику <span>БЕСПЛАТНО</span></div>
+          <div class="promoForm__text-sm">Заполните заявку и мы с Вами свяжемся</div>
+          <div class="promoForm__form">
+            <form action="" id="sendPromo">
               <input type="text" name="name" id="name" placeholder="Фамилия Имя">
-              <!--<input type="tel" name="phone" id="phone" placeholder="Номер телефона">-->
+              <input type="tel" name="phone" id="phone" placeholder="Номер телефона">
+              <button id="formSubmit" type="submit" form="sendPromo">Отправить</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="diagnostics" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <div class="closer popup-close">
+          <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+          </svg>
+        </div>
+        <div class="diagnosticsForm">
+          <div class="diagnosticsForm__title">ОТВЕТЬТЕ НА НЕСКОЛЬКО ВОПРОСОВ</div>
+          <div class="diagnosticsForm__text">Получите маркетинговую диагностику <span>БЕСПЛАТНО</span></div>
+          <div class="diagnosticsForm__form">
+            <form action="" id="sendDiagnostics">
+              <input type="text" name="company" id="company" placeholder="Название компании">
+              <input type="tel" name="phone" id="phone" placeholder="Номер телефона">
               <input type="email" name="email" id="email" placeholder="E-mail">
-              <button id="formSubmit" type="submit" form="sendCatalog">Получить</button>
+              <input type="text" name="company_type" id="company_type" placeholder="Направление компании">
+              <input type="text" name="insta_link" id="insta_link" placeholder="Ссылка на Instagram">
+              <input type="text" name="fb_link" id="fb_link" placeholder="Ссылка на Facebook">
+              <input type="text" name="site_link" id="site_link" placeholder="Ссылка на сайт">
+              <input type="text" name="rivals" id="rivals" placeholder="Укажите двух конкурентов">
+              <button id="formSubmit" type="submit" form="sendDiagnostics">Отправить</button>
             </form>
           </div>
 
@@ -1012,6 +1050,12 @@
   <div id="partfolio-popup" class="popup">
     <div class="popup__body">
       <div class="popup__content">
+        <div class="closer popup-close">
+          <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+          </svg>
+        </div>
         <div class="partfolio-decor">
           <span></span>
           <span></span>
@@ -1082,6 +1126,12 @@
   <div id="intro-media" class="popup">
     <div class="popup__body">
       <div class="popup__content video-popup">
+        <div class="closer popup-close">
+          <svg height="365.696pt" viewBox="0 0 365.696 365.696" width="365.696pt" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m243.1875 182.859375 113.132812-113.132813c12.5-12.5 12.5-32.765624 0-45.246093l-15.082031-15.082031c-12.503906-12.503907-32.769531-12.503907-45.25 0l-113.128906 113.128906-113.132813-113.152344c-12.5-12.5-32.765624-12.5-45.246093 0l-15.105469 15.082031c-12.5 12.503907-12.5 32.769531 0 45.25l113.152344 113.152344-113.128906 113.128906c-12.503907 12.503907-12.503907 32.769531 0 45.25l15.082031 15.082031c12.5 12.5 32.765625 12.5 45.246093 0l113.132813-113.132812 113.128906 113.132812c12.503907 12.5 32.769531 12.5 45.25 0l15.082031-15.082031c12.5-12.503906 12.5-32.769531 0-45.25zm0 0" />
+          </svg>
+        </div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/x4ziB-pDABU" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
@@ -1093,7 +1143,7 @@
     <div class="popup__body">
       <div class="popup__content">
         <div class="result-msg">Спасибо! Ваша заявка была отправлена.</div>
-        <a href="#" class="popup-close btn-orange-fil">Закрыть</a>
+        <a href="#" class="popup-close theme-btn">Закрыть</a>
       </div>
     </div>
   </div>

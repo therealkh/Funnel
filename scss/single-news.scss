@@ -85,10 +85,8 @@ body{
   box-sizing: border-box;
   position: relative;
   height: 100%;
-  .container {
-    .decor{
-      z-index: 5;
-    }
+  .decor{
+    z-index: 5;
   }
   &__wrapper{
     position: relative;
@@ -485,6 +483,86 @@ body{
     }
   }
 }
+
+
+.single-news{
+  &__wrapper
+  .single-news-title {
+    background: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/news/fire marketolog.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 65vh;
+    position: relative;
+    &>.container {
+      position: relative;
+      z-index: 10;
+      .single-news__title {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        &>span{
+          padding-top: 84px;
+          position: relative;
+          @media (max-width: 425px){
+            padding-top: 42px;
+          }
+          &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 60px;
+            background-color: $COLOR_WHITE;
+            @media (max-width: 425px){
+              height: 30px;
+            }
+          }
+        }
+        span {
+          font-weight: bold;
+          font-size: 54px;
+          color: $COLOR_WHITE;
+          line-height: 100%;
+          text-transform: uppercase;
+          @media (max-width: 767px){
+            font-size: 35px;
+          }
+          @media (max-width: 425px){
+            font-size: 30px;
+          }
+          @media (max-width: 375px){
+            font-size: 27px;
+          }
+          span{
+            display: block;
+            color: $COLOR_ACCENT;
+          }
+        }
+      }
+    }
+  }
+  &__content{
+    padding: 44px 0;
+    .container {
+      .single-news__text{
+        p {
+          margin-bottom: 20px;
+          font-size: 18px;
+          line-height: 130%;
+          color: $COLOR_BLACK;
+          span.tab{
+            display: inline-block;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .footer{
   background: linear-gradient(rgba($color: #000000, $alpha: 0.8), rgba($color: #000000, $alpha: 0.8)), url('../img/backgrounds/footer.jpg');

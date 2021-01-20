@@ -49,7 +49,7 @@ body {
           box-sizing: border-box;
   position: relative;
   height: 100%; }
-  .block .container .decor {
+  .block .decor {
     z-index: 5; }
   .block__wrapper {
     position: relative;
@@ -413,6 +413,86 @@ body {
           fill: #FFFFFF; }
       .header.ontop .header__wrapper .header__menu-btn .menu-btn span {
         background-color: #FFFFFF; }
+
+.single-news__wrapper
+.single-news-title {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../img/news/fire marketolog.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../img/news/fire marketolog.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 65vh;
+  position: relative; }
+  .single-news__wrapper
+  .single-news-title > .container {
+    position: relative;
+    z-index: 10; }
+    .single-news__wrapper
+    .single-news-title > .container .single-news__title {
+      height: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start; }
+      .single-news__wrapper
+      .single-news-title > .container .single-news__title > span {
+        padding-top: 84px;
+        position: relative; }
+        @media (max-width: 425px) {
+          .single-news__wrapper
+          .single-news-title > .container .single-news__title > span {
+            padding-top: 42px; } }
+        .single-news__wrapper
+        .single-news-title > .container .single-news__title > span:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 60px;
+          background-color: #FFFFFF; }
+          @media (max-width: 425px) {
+            .single-news__wrapper
+            .single-news-title > .container .single-news__title > span:before {
+              height: 30px; } }
+      .single-news__wrapper
+      .single-news-title > .container .single-news__title span {
+        font-weight: bold;
+        font-size: 54px;
+        color: #FFFFFF;
+        line-height: 100%;
+        text-transform: uppercase; }
+        @media (max-width: 767px) {
+          .single-news__wrapper
+          .single-news-title > .container .single-news__title span {
+            font-size: 35px; } }
+        @media (max-width: 425px) {
+          .single-news__wrapper
+          .single-news-title > .container .single-news__title span {
+            font-size: 30px; } }
+        @media (max-width: 375px) {
+          .single-news__wrapper
+          .single-news-title > .container .single-news__title span {
+            font-size: 27px; } }
+        .single-news__wrapper
+        .single-news-title > .container .single-news__title span span {
+          display: block;
+          color: #E81C34; }
+.single-news__content {
+  padding: 44px 0; }
+  .single-news__content .container .single-news__text p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 130%;
+    color: #000000; }
+    .single-news__content .container .single-news__text p span.tab {
+      display: inline-block;
+      width: 20px; }
 
 .footer {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url("../img/backgrounds/footer.jpg");

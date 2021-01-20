@@ -283,6 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function openPopup(popup) {
+    fullpage_api.setAllowScrolling(false);
     //console.log(popup);
     if (popup && unlock) {
       const popupActive = document.querySelector('.popup.opened');
@@ -292,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
       else {
         bodyLock();
       }
-      //fullpage_api.setAllowScrolling(false);
       popup.style.display = 'flex'
       popup.classList.add('opened');
       popup.addEventListener('click', (event) => {
@@ -303,8 +303,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function closePopup(popup, doUnlock = true) {
+    fullpage_api.setAllowScrolling(true);
     if (unlock) {
-      //fullpage_api.setAllowScrolling(true);
       popup.classList.remove('opened');
       if (doUnlock) {
         bodyUnlock();

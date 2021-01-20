@@ -7,14 +7,14 @@ require 'phpmailer/Exception.php';
 // Переменные, которые отправляет пользователь
 $username = $_POST['name'];
 $phonenumber = $_POST['phone'];
-$email = $_POST['email'];
-$msg = $_POST['msg'];
+//$company = $_POST['company'];
+//$msg = $_POST['msg'];
 
 // Формирование самого письма
-$title = "Новая заявка на КП от клиента на сайте Funnel";
+$title = "Клиент запросил бесплатную диагностику";
 $body = "
-<b>Имя:</b> $username<br>
-<b>Почта:</b> $email<br><br>
+<h2>Клиент успел запросить бесплатную диагностику на сайте Funnel</h2><br>
+<br>Фамилия Имя:</br> $username<br>
 <b>Телефон:</b> $phonenumber<br><br>
 ";
 
@@ -33,7 +33,7 @@ try {
     $mail->Password   = 'stanum159357'; // Пароль на почте
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom('mailer.stanum.delta@mail.ru', 'Funnel Notifications'); // Адрес самой почты и имя отправителя
+    $mail->setFrom('mailer.stanum.delta@mail.ru', 'Funnel Notifications (Promo)'); // Адрес самой почты и имя отправителя
 
     // Получатель письма
     $mail->addAddress('uktam4ik.khamidov@gmail.com');  

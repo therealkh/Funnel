@@ -291,6 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
       else {
         bodyLock();
       }
+      fullpage_api.setAllowScrolling(false);
       popup.classList.add('opened');
       popup.addEventListener('click', (event) => {
         if (!event.target.closest('.popup__content')) {

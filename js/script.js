@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         openPopup(promoPopup)
         startPromoTimer();
-      }, 3000);
+      }, 30000);
       if (anchor) {
         setTimeout(() => {
           fullpage_api.moveTo(getSectionIdByAnchor(anchor));

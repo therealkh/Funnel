@@ -772,6 +772,7 @@ body{
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          text-decoration: none;
           //border: 1px solid red;
           margin: 40px 0;
           img {
@@ -2830,6 +2831,7 @@ button[disabled]{
       position: relative;
       transition: all 0.4s;
       transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+      //box-sizing: padding-box;
       & .closer{
         cursor: pointer;
         position: absolute;
@@ -2862,7 +2864,6 @@ button[disabled]{
           }
         }
       }
-      //box-sizing: padding-box;
       @media (max-width: 920px){
         padding: 60px 80px;
       }
@@ -2879,6 +2880,7 @@ button[disabled]{
     }
     .video-popup{
       width: auto;
+      //padding: 30px;
       padding: 10px;
       max-width: 100%;
       max-height: 100%;
@@ -2889,6 +2891,39 @@ button[disabled]{
       transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
       & iframe{
         max-width: 100%;
+      }
+      & .closer{
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 36px;
+        height: 36px;
+        //border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: $COLOR_WHITE;
+        svg{
+          height: 16px;
+          width: 16px;
+          transition: all 0.2s;
+          path{
+            fill: $COLOR_ACCENT;
+          }
+        }
+        &:hover{
+          svg path{
+            fill: $COLOR_HOVER
+          }
+        }
+        &:active{
+          svg path{
+            fill: $COLOR_PRESSED
+          }
+        }
       }
     }
   }

@@ -70,23 +70,25 @@ $(document).ready(function () {
   });
 });
 
-
-document.body.onload = () => {
-  const preloader = document.querySelector('.preloader');
-  setTimeout(() => {
-    preloader.classList.add('hidden');
-    if (anchor) {
-      setTimeout(() => {
-        fullpage_api.moveTo(getSectionIdByAnchor(anchor));
-      }, 500);
-    }
-  }, 500)
-  setTimeout(() => {
-    preloader.style.display = 'none'
-  }, 1000);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.onload = () => {
+    const preloader = document.querySelector('.preloader');
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+      setTimeout(() => {
+        openPopup(promoPopup)
+        startPromoTimer();
+      }, 3000);
+      if (anchor) {
+        setTimeout(() => {
+          fullpage_api.moveTo(getSectionIdByAnchor(anchor));
+        }, 500);
+      }
+    }, 500)
+    setTimeout(() => {
+      preloader.style.display = 'none'
+    }, 1000);
+  }
 
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
@@ -114,10 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const gotoSlideAnchors = document.querySelectorAll('.gotoSlide');
   const menuLinks = document.querySelectorAll('.menu-link');
   const promoPopup = document.getElementById('promo');
-  setTimeout(() => {
-    openPopup(promoPopup)
-    startPromoTimer();
-  }, 30000);
+
   //console.log(team_all);
   let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
   let partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));

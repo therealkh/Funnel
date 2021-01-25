@@ -118,11 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const promoPopup = document.getElementById('promo');
 
   //console.log(team_all);
-  let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
-  let partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));
   let unlock = true;
   let timeout = 400;
   let promo_timeOut = 300;
+  let intro_container_left = (parseFloat(window.getComputedStyle(intro_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(intro_container).getPropertyValue("padding-left")));
+  let partfolio_container_left = (parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(partfolio_container).getPropertyValue("padding-left")));
   let partfolio_left_offset = partfolio_container_left - intro_container_left;
   partfolio_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
   news_wrapper.style.marginLeft = `-${partfolio_left_offset}px`;
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let minS = ''
       if (sec < 10) {
         secS = `0${sec}`;
-        console.log(secS);
+        //console.log(secS);
       }
       else {
         secS = `${sec}`;
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (min < 10) {
         minS = `0${min}`
-        console.log(minS);
+        //console.log(minS);
       }
       else {
         minS = `${min}`;
@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       let timeStr = `${minS}:${secS}`;
-      console.log(timeStr);
+      //console.log(timeStr);
       timerNode.textContent = timeStr;
       if (promo_timeOut <= 0) {
         clearInterval(promoTimer);

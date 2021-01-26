@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const team_all = document.querySelector('.team-all');
   const team_all_m = document.querySelector('.team-all-mobile');
   const team_all_btn = document.getElementById('team_see_all');
+  const team_meet = document.getElementById('team-meet');
   const news = document.querySelectorAll('.news-item');
   const gotoSlideAnchors = document.querySelectorAll('.gotoSlide');
   const menuLinks = document.querySelectorAll('.menu-link');
@@ -202,7 +203,11 @@ document.addEventListener("DOMContentLoaded", () => {
       team_img.classList.add('hide');
     }
   })
-
+  team_meet.addEventListener('click', () => {
+    let toWhom = team_meet.getAttribute('data-member');
+    const formToWhom = document.getElementById('msg');
+    formToWhom.setAttribute('value', toWhom);
+  })
   team_circles.forEach(item => {
     item.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -218,7 +223,17 @@ document.addEventListener("DOMContentLoaded", () => {
           team_text.textContent = item.getAttribute('data-text');
           //team_info.classList.remove('hide');
           team_img.classList.remove('hide');
-          team_info.classList.remove('hide');
+          team_meet.setAttribute('data-member', item.getAttribute('data-name'));
+          //alert(team_meet.getAttribute('data-member'));
+          if (document.body.clientWidth <= 991) {
+            team_info.classList.remove('hide');
+          }
+          if (item.classList.contains('no-contact')) {
+            team_info.querySelector('a.theme-btn').style.display = "none";
+          }
+          else {
+            team_info.querySelector('a.theme-btn').style.display = "";
+          }
 
           let team_block;
           if (document.body.clientWidth > 1024) {
@@ -322,6 +337,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fullpage_api.setAllowScrolling(true);
     if (unlock) {
       popup.classList.remove('opened');
+      const formToWhom = document.getElementById('msg');
+      formToWhom.setAttribute('value', 'Получатель не указан');
       if (doUnlock) {
         bodyUnlock();
       }

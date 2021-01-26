@@ -16,6 +16,7 @@ $body = "
 <b>Имя:</b> $username<br>
 <b>Почта:</b> $email<br><br>
 <b>Телефон:</b> $phonenumber<br><br>
+<b>Кому:</b> $msg<br><br>
 ";
 
 // Настройки PHPMailer
@@ -29,11 +30,11 @@ try {
 
     // Настройки вашей почты
     $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
-    $mail->Username   = 'mailer.stanum.delta'; // Логин на почте
-    $mail->Password   = 'stanum159357'; // Пароль на почте
+    $mail->Username   = 'tuna.notifications'; // Логин на почте
+    $mail->Password   = 'Zd/5pi)bzeM7wFC'; // Пароль на почте
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom('mailer.stanum.delta@mail.ru', 'Funnel Notifications'); // Адрес самой почты и имя отправителя
+    $mail->setFrom('tuna.notifications@mail.ru', 'Funnel Notifications'); // Адрес самой почты и имя отправителя
 
     // Получатель письма
     $mail->addAddress('uktam4ik.khamidov@gmail.com');  

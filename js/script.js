@@ -550,7 +550,7 @@ function getSectionIdByAnchor(anchor) {
       secID = 6;
       break;
     case 'footer':
-      secID = 7;
+      secID = 8;
       break;
     default:
       secID = 0;
